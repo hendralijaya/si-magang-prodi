@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\DashboardMahasiswaController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\TestController;
+
 
 
 /*
@@ -19,4 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('test/test', TestController::class);
+// Route Mahasiswa
+Route::get('/mahasiswa', [DashboardMahasiswaController::class, 'index']);
+Route::get('/mahasiswa/profile', [DashboardMahasiswaController::class, 'profile']);
+Route::get('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'formApplyMagang'])->name('mahasiswa.formApplyMagang');
+Route::post('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'storeApplyMagang'])->name('mahasiswa.storeApplyMagang');
+Route::get('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'formMagang'])->name('mahasiswa.formMagang');
+Route::post('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'storeMagang'])->name('mahasiswa.storeMagang');
