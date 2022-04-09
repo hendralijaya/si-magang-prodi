@@ -11,7 +11,10 @@ class DashboardMahasiswaController extends Controller
 {
     public function index()
     {
-        return view('dashboard.mahasiswa.index');
+
+        return view('dashboard.mahasiswa.index', [
+            'mahasiswa' => auth()->user()->mahasiswa
+        ]);
     }
 
     public function profile()

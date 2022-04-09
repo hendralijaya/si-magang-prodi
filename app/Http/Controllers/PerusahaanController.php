@@ -62,7 +62,7 @@ class PerusahaanController extends Controller
         }
         Perusahaan::create($validatedDataPerusahaan);
         AlamatPerusahaan::create($validatedDataAlamatPerusahaan);
-        return redirect()->intended(route('admin.perusahaan'))->with('success', 'Perusahaan has been successfully stored');
+        return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully stored');
     }
 
     /**
@@ -134,7 +134,7 @@ class PerusahaanController extends Controller
         }
         Perusahaan::where('id_perusahaan', $id)->update($validatedDataPerusahaan);
         AlamatPerusahaan::where('id_perusahaan', $id)->update($validatedDataAlamatPerusahaan);
-        return redirect()->intended(route('admin.perusahaan'))->with('success', 'Perusahaan has been successfully updated');
+        return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully updated');
     }
 
     /**
@@ -153,6 +153,6 @@ class PerusahaanController extends Controller
             Storage::delete($perusahaan->moa);
         }
         Perusahaan::destroy($id);
-        return redirect()->intended(route('admin.perusahaan'))->with('success', 'Perusahaan has been successfully deleted');
+        return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully deleted');
     }
 }

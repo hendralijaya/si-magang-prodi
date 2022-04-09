@@ -9,25 +9,29 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index',[
+        return view('login.login',[
             'title' => 'Login',
         ]);
     }
 
     public function authenticate(Request $request)
     {
+        
         $credentials = $request->validate([
             'email' => 'required|email:dns',
             'password' => 'required'
         ]);
-
         if(Auth::attempt($credentials)){
             if(auth()->user()->id_role == '1'){
-                return redirect()->intended(route('admin.index'))->with('success','Login success!');
+                $request->session()->put('id_role',auth()->user()->id_role );
+                $request->session()->regenerate();
+                return redirect()->intended(route('admin.index'));
             }else if(auth()->user()->id_role == '2'){
+                $request->session()->regenerate();
                 return redirect()->intended(route('mahasiswa.index'))->with('success','Login success!');
             }else if(auth()->user()->id_role == '3'){
-                return redirect()->intended(route('dosen.index'))->with('success','Login success!');
+                $request->session()->regenerate();
+                return redirect()->intended(route('admin.index'))->with('success','Login success!');
             }
         }
         return back()->with('loginError','Login failed!');

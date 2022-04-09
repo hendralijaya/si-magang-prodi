@@ -1,7 +1,15 @@
 <?php
 
-use App\Http\Controllers\DashboardMahasiswaController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DosenController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MentorController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardDosenController;
+use App\Http\Controllers\DashboardMahasiswaController;
 
 
 
@@ -16,14 +24,35 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/test', function () {
+    return view('welcome', ['title' => 'Test']);
 });
 
+// Regis routes
+Route::get('/register', [RegisterController::class, 'index'])->name('register.index')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
+
+//Login routes
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate')->middleware('guest');
+Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
 // Route Mahasiswa
-Route::get('/mahasiswa', [DashboardMahasiswaController::class, 'index']);
-Route::get('/mahasiswa/profile', [DashboardMahasiswaController::class, 'profile']);
-Route::get('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'formApplyMagang'])->name('mahasiswa.formApplyMagang');
-Route::post('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'storeApplyMagang'])->name('mahasiswa.storeApplyMagang');
-Route::get('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'formMagang'])->name('mahasiswa.formMagang');
-Route::post('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'storeMagang'])->name('mahasiswa.storeMagang');
+Route::get('/mahasiswa', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.index')->middleware('mahasiswa');
+Route::get('/mahasiswa/profile', [DashboardMahasiswaController::class, 'profile'])->name('mahasiswa.profile')->middleware('mahasiswa');
+Route::get('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'formApplyMagang'])->name('mahasiswa.formApplyMagang')->middleware('mahasiswa');
+Route::post('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'storeApplyMagang'])->name('mahasiswa.storeApplyMagang')->middleware('mahasiswa');
+Route::get('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'formMagang'])->name('mahasiswa.formMagang')->middleware('mahasiswa');
+Route::post('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'storeMagang'])->name('mahasiswa.storeMagang')->middleware('mahasiswa');
+
+// Route Admin
+Route::get('/admin', [DashboardAdminController::class, 'index'])->name('admin.index')->middleware('admin');
+Route::resource('/admin/perusahaan', PerusahaanController::class)->middleware('admin');
+Route::resource('/admin/dosen', DosenController::class)->middleware('admin');
+Route::resource('/admin/mahasiswa', MahasiswaController::class)->middleware('admin');
+Route::resource('/admin/mentor', MentorController::class)->middleware('admin');
+
+// Route Dosen
+Route::get('/admin/profile', [DashboardDosenController::class, 'profile'])->name('dosen.profile')->middleware('dosen');
+
+

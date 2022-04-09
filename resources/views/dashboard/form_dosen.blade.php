@@ -11,35 +11,49 @@
     <title>Data Dosen Pembimbing</title>
   </head>
   <body>
-    <h3>Form Dosen Pembimbing</h3>
+    <form action="{{ route('dosen.store') }}" method="POST">
+        <h3>Form Dosen Pembimbing</h3>
+        <div>
+            <label for="">
+                NIK
+            </label>
+            <input type="number" name="nik">
+        </div>
 
-    <div>
-        <label for="">
-            NIK
-        </label>
-        <input type="number" name="nik">
-    </div>
+        <div>
+            <label for="">
+                Nama Dosen
+            </label>
+            <input type="text" name="nama_dosen">
+        </div>
 
-    <div>
-        <label for="">
-            Nama Dosen
-        </label>
-        <input type="text" name="nama_dosen">
-    </div>
+        <div>
+            <label for="">
+                Prodi
+            </label>
+            <input type="text" name="prodi">
+        </div>
 
-    <div>
-        <label for="">
-            Prodi
-        </label>
-        <input type="text" name="prodi">
-    </div>
-
-    <div>
-        <label for="">
-            No HP
-        </label>
-        <input type="number" name="no_hp">
-    </div>
+        <div>
+            <label for="">
+                No HP
+            </label>
+            <input type="number" name="no_hp">
+        </div>
+        <div>
+            <label for="">
+                Email
+            </label>
+            <input type="email" name="email">
+        </div>
+        <div>
+            <label for="">
+                Password
+            </label>
+            <input type="password" name="password">
+        </div>
+        <button type="submit" value="Submit">Submit</button>
+    </form>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

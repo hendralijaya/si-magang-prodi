@@ -12,7 +12,7 @@
   </head>
   <body>
     <h3>Form Perusahaan</h3>
-
+    <form action="{{ route('perusahaan.store') }}" method="POST">
     <div>
         <label for="">
             Nama Perusahaan
@@ -54,7 +54,34 @@
       </label>
       <input type="text" name="email_perusahaan">
   </div>
+  <div>
+    <label for="">
+        Provinsi
+    </label>
+    <input type="text" name="provinsi">
+</div>
 
+<div>
+    <label for="">
+        Kabupaten/Kota
+    </label>
+    <input type="text" name="kabupaten_kota">
+</div>
+
+<div>
+    <label for="">
+        Kode Pos
+    </label>
+    <input type="number" name="kode_pos">
+</div>
+
+<div>
+    <label for="">
+        Jalan
+    </label>
+    <input type="text" name="jalan">
+</div>
+</form>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
