@@ -37,4 +37,8 @@ class Perusahaan extends Model
     {
         return $this->belongsToMany(Mahasiswa::class, 'mahasiswa_apply_magang_perusahaan', 'id_perusahaan', 'nim');
     }
+    public function getRouteKeyName()
+    {
+        return 'id_perusahaan';
+    }
 }

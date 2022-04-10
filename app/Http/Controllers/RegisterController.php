@@ -20,7 +20,7 @@ class RegisterController extends Controller
             'password' => 'required'
         ]);
         $credentials['password'] = Hash::make($credentials['password']);
-        $credentials['id_role'] = "1";
+        $credentials['id_role'] = "3";
         User::create($credentials);
         return redirect('/login')->with('success','Registration was successful! Please login');
     }

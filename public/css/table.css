@@ -1,0 +1,96 @@
+a {
+    text-align: left;
+}
+table,
+th,
+td {
+    padding: 15px;
+    border: 2px solid black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.btn1 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn1 span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn1:hover span {
+    padding-right: 25px;
+}
+
+.btn1:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.btn2 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn2 span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn2:hover span {
+    padding-right: 25px;
+}
+
+.btn2:hover:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+
+.btn3 span {
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+}
+
+.btn3 span:after {
+    content: "\00bb";
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
+}
+
+.btn3:hover span {
+    padding-right: 25px;
+}
+
+.btn3:hover:hover span:after {
+    opacity: 1;
+    right: 0;
+}
+a:hover,
+button:hover,
+input[type="view"],
+input[type="edit"],
+input[type="delete"] {
+    opacity: 0.9;
+}
+tr:hover {
+    background-color: orange;
+}

@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Mahasiswa;
 use Illuminate\Http\Request;
 use App\Models\AlamatMahasiswa;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class MahasiswaController extends Controller
@@ -17,9 +18,10 @@ class MahasiswaController extends Controller
      */
     public function index()
     {
-        $mahasiswa = Mahasiswa::all();
+        $mahasiswa = DB::select("SELECT * FROM mahasiswa ORDER BY nama_mahasiswa ASC");
         return view('dashboard.admin.mahasiswa', [
-            'mahasiswa' => $mahasiswa
+            'mahasiswa' => $mahasiswa,
+            'title' => 'Mahasiswa'
         ]);
     }
 

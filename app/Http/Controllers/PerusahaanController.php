@@ -18,6 +18,7 @@ class PerusahaanController extends Controller
     {
         $perusahaan = Perusahaan::all();
         return view('dashboard.admin.perusahaan', [
+            'title' => 'Perusahaan',
             'perusahaan' => $perusahaan
         ]);
     }
@@ -73,7 +74,7 @@ class PerusahaanController extends Controller
      */
     public function show($id)
     {
-        $perusahaan = Perusahaan::findOrFail($id)->alamat_perusahaan;
+        $perusahaan = Perusahaan::where('id_perusahaan', $id)->first();
         return view('dashboard.admin.show_perusahaan', [
             'perusahaan' => $perusahaan
         ]);
@@ -145,14 +146,14 @@ class PerusahaanController extends Controller
      */
     public function destroy($id)
     {
-        $perusahaan = Perusahaan::findOrFail($id);
-        if($perusahaan->mou){
+        $perusahaan = Perusahaan::where('id_perusahaan',$id)->first();
+        if($perusahaan->mou != NULL){
             Storage::delete($perusahaan->mou);
         }
-        if($perusahaan->moa){
+        if($perusahaan->moa != NULL){
             Storage::delete($perusahaan->moa);
         }
-        Perusahaan::destroy($id);
+        Perusahaan::where('id_perusahaan',$id)->delete();
         return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully deleted');
     }
 }

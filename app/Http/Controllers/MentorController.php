@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Mentor;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MentorController extends Controller
 {
@@ -15,8 +16,10 @@ class MentorController extends Controller
      */
     public function index()
     {
+        $mentor = DB::select("SELECT * FROM mentor INNER JOIN perusahaan ON mentor.id_perusahaan = perusahaan.id_perusahaan ORDER BY nama_mentor ASC");
         return view('dashboard.admin.mentor',[
-            'mentor' => Mentor::all()
+            'title' => 'Mentor',
+            'mentor' => $mentor
         ]);
     }
 
@@ -50,7 +53,6 @@ class MentorController extends Controller
         Mentor::create($validatedDataMentor);
         return redirect()->intended(route('mentor.index'))->with('success','Mentor has been successfully added');
     }
-
     /**
      * Display the specified resource.
      *
@@ -60,7 +62,7 @@ class MentorController extends Controller
     public function show($id)
     {
         return view('dashboard.admin.show_mentor', [
-            'mentor' => Mentor::findOrFail($id)
+            'mentor' => Mentor::where('id_mentor',$id)->first()
         ]);
     }
 
@@ -72,9 +74,10 @@ class MentorController extends Controller
      */
     public function edit($id)
     {
+        $mentor = Mentor::where('id_mentor',$id)->first();
         return view('dashboard.admin.edit_mentor', [
-            'mentor' => Mentor::findOrFail($id),
-            'perusahaan' => Perusahaan::all()
+            'mentor' => Mentor::where('id_mentor',$id)->first(),
+            'perusahaan' => $mentor->perusahaan
         ]);
     }
 
@@ -106,7 +109,7 @@ class MentorController extends Controller
      */
     public function destroy($id)
     {
-        Mentor::destroy($id);
+        Mentor::where('id_mentor',$id)->delete();
         return redirect()->intended(route('mentor.index'))->with('success','Mentor has been successfully deleted');
     }
 }

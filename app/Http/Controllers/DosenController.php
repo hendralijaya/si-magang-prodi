@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Dosen;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DosenController extends Controller
 {
@@ -15,9 +16,10 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dosen = Dosen::all();
+        $dosen = DB::select("SELECT * FROM dosen ORDER BY nama_dosen ASC");
         return view('dashboard.admin.dosen', [
-            'dosen' => $dosen
+            'dosen' => $dosen,
+            'title' => 'Dosen'
         ]);
     }
 

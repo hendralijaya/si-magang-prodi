@@ -17,6 +17,16 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
+    public static function routeHome()
+    {
+        if(auth()->user()->id_role == '1'){
+            return 'admin';
+        }else if(auth()->user()->id_role == '2'){
+            return 'mahasiswa';
+        }else if(auth()->user()->id_role == '3'){
+            return 'dosen';
+        }
+    }
     public const HOME = '/home';
 
     /**
