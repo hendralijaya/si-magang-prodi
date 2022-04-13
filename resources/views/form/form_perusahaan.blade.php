@@ -16,6 +16,7 @@
         <label for=""  class="col-sm-2 col-form-label">
             Status Kerja Sama
         </label>
+        
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="status_kerja_sama">
         </div>
