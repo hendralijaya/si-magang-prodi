@@ -30,7 +30,7 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.form_dosen');
+        return view('form.form_dosen');
     }
 
     /**
