@@ -4,6 +4,9 @@
 @endsection
 
 @section('container')
+<div class="col-md-3 d-md-inline">
+    <a class="btn btn-primary" href="{{ route('mahasiswa.create') }}"> Add New Mahasiswa </a>
+</div>
 @if (session()->has('success'))
   <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}

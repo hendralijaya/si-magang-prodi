@@ -32,7 +32,7 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.form_mahasiswa');
+        return view('form.form_mahasiswa');
     }
 
     /**
