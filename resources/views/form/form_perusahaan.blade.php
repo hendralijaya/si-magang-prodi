@@ -17,7 +17,7 @@
             Status Kerja Sama
         </label>
         <div class="col-sm-10">
-        <input type="text" name="status_kerja_sama">
+        <input type="text" class="col-sm-10" name="status_kerja_sama">
         </div>
     </div>
 
@@ -26,7 +26,7 @@
             Nomor Telpon
         </label>
         <div class="col-sm-10">
-        <input type="text" name="nomor_telepon">
+        <input type="text" class="col-sm-10" name="nomor_telepon">
         </div>
     </div>
 
@@ -35,7 +35,7 @@
             Email Perusahaan
         </label>
         <div class="col-sm-10">
-        <input type="text" name="email_perusahaan">
+        <input type="text" class="col-sm-10" name="email_perusahaan">
         </div>
     </div>
 
@@ -44,7 +44,7 @@
             MOA
         </label>
         <div class="col-sm-10">
-        <input type="text" name="moa">
+        <input type="file" class="col-sm-10" name="moa">
         </div>
     </div>
 
@@ -53,7 +53,7 @@
           MOU
       </label>
         <div class="col-sm-10">
-      <input type="text" name="email_perusahaan">
+      <input type="file" class="col-sm-10" name="email_perusahaan">
         </div>
   </div>
 
@@ -62,7 +62,7 @@
         Provinsi
     </label>
     <div class="col-sm-10">
-    <input type="text" name="provinsi">
+    <input type="text" class="col-sm-10" name="provinsi">
 </div>
 </div>
 
@@ -71,34 +71,37 @@
         Kabupaten/Kota
     </label>
     <div class="col-sm-10">
-    <input type="text" name="kabupaten_kota">
+    <input type="text" class="col-sm-10" name="kabupaten_kota">
 </div>
 </div>
 
 <div class= "mb-3 row">
-    <label for="" >
+    <label for="" class="col-sm-2 col-form-label">
         Kode Pos
     </label>
-    <input type="number" name="kode_pos">
+    <div class="col-sm-10">
+    <input type="number" class="col-sm-10" name="kode_pos">
+    </div>
 </div>
 
-<div>
+<div class="mb-3 row">
     <label for="" class="col-sm-2 col-form-label">
         Jalan
     </label>
     <div class="col-sm-10">
-    <input type="text" name="jalan">
+    <input type="text" class="col-sm-10" name="jalan">
 </div>
 </div>
 
 <div class= "mb-3 row">
-<fieldset id="buildyourform">
-    <label for="">
-        Bidang Perusahaan :
+
+    <label for="" class="col-sm-2 col-form-label">
+        Bidang Perusahaan
     </label>
     <div class="col-sm-10">
-    <input type="text" name="bidang_perusahaan[]">
+    <input type="text" class="col-sm-10" name="bidang_perusahaan[]">
 </div>
+<fieldset id="buildyourform">
 </fieldset>
 <input type="button" value="Tambahkan bidang perusahaan" class="add" id="add" />
 <button type="submit" value="Submit">Submit</button>
@@ -120,11 +123,11 @@
             $("#add").click(function() {
                 var lastField = $("#buildyourform div:last");
                 var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
-                var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
+                var fieldWrapper = $("<div class=\"fieldwrapper md-3 row\" id=\"field" + intId + "\"/>");
                 fieldWrapper.data("idx", intId);
-                var fName = $("<label class=\"fieldname\">Bidang Perusahaan : </label>");
-                var fType = $("<input type=\"text\" class=\"fieldname\" name=\"bidang_perusahaan\[\]\" />");
-                var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
+                var fName = $("<label class=\"fieldname col-sm-2 col-form-label\">Bidang Perusahaan</label>");
+                var fType = $("<div class=\"col-sm-10\"><input type=\"text\" class=\"fieldname col-sm-2 col-form-label\" name=\"bidang_perusahaan\[\]\" />");
+                var removeButton = $("<input type=\"button\" class=\"remove btn btn-danger\" value=\"-\" /></div>");
                 removeButton.click(function() {
                     $(this).parent().remove();
                 });
