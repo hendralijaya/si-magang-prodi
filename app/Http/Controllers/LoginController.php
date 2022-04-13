@@ -25,7 +25,7 @@ class LoginController extends Controller
             if(auth()->user()->id_role == '1'){
                 $request->session()->put('id_role',auth()->user()->id_role );
                 $request->session()->regenerate();
-                return redirect()->intended(route('admin.index'));
+                return redirect()->intended(route('admin.dashboard'));
             }else if(auth()->user()->id_role == '2'){
                 $request->session()->regenerate();
                 return redirect()->intended(route('mahasiswa.index'))->with('success','Login success!');

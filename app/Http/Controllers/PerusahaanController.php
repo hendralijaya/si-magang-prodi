@@ -29,7 +29,9 @@ class PerusahaanController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.form_perusahaan');
+        return view('form.form_perusahaan',[
+            'title' => 'Tambah Perusahaan',
+        ]);
     }
 
     /**
@@ -40,6 +42,7 @@ class PerusahaanController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request->post());
         $validatedDataPerusahaan = $request->validate([
             'nama_perusahaan' => 'required',
             'status_kerja_sama' => 'required',

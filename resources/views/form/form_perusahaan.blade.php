@@ -1,23 +1,15 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <title>Data Perusahaan</title>
-  </head>
-  <body>
+@extends('partials.main')
+@section('container')
     <h3>Form Perusahaan</h3>
-    <form action="{{ route('perusahaan.store') }}" method="POST">
-    <div>
-        <label for="">
+    <form action="{{ route('perusahaan.store') }}" method="post">
+        @csrf
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Nama Perusahaan
         </label>
-        <input type="text" name="nama_perusahaan">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="nama_perusahaan">
+        </div>
     </div>
 
     <div>
@@ -81,6 +73,17 @@
     </label>
     <input type="text" name="jalan">
 </div>
+<div>
+<fieldset id="buildyourform">
+    <label for="">
+        Bidang Perusahaan :
+    </label>
+    <input type="text" name="bidang_perusahaan[]">
+</fieldset>
+<input type="button" value="Tambahkan bidang perusahaan" class="add" id="add" />
+<button type="submit" value="Submit">Submit</button>
+</div>
+<button type="submit" value="Submit">Submit</button>
 </form>
     <!-- Optional JavaScript; choose one of the two! -->
 
@@ -92,5 +95,24 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
-  </body>
-</html>
+<script>
+        $(document).ready(function() {
+            $("#add").click(function() {
+                var lastField = $("#buildyourform div:last");
+                var intId = (lastField && lastField.length && lastField.data("idx") + 1) || 1;
+                var fieldWrapper = $("<div class=\"fieldwrapper\" id=\"field" + intId + "\"/>");
+                fieldWrapper.data("idx", intId);
+                var fName = $("<label class=\"fieldname\">Bidang Perusahaan : </label>");
+                var fType = $("<input type=\"text\" class=\"fieldname\" name=\"bidang_perusahaan\[\]\" />");
+                var removeButton = $("<input type=\"button\" class=\"remove\" value=\"-\" />");
+                removeButton.click(function() {
+                    $(this).parent().remove();
+                });
+                fieldWrapper.append(fName);
+                fieldWrapper.append(fType);
+                fieldWrapper.append(removeButton);
+                $("#buildyourform").append(fieldWrapper);
+            });
+        });
+</script>
+@endsection
