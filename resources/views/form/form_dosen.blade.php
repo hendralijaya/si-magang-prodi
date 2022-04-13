@@ -23,38 +23,51 @@
             </div>
         </div>
 
-        <div>
-            <label for="">
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">
                 Nama Dosen
             </label>
-            <input type="text" name="nama_dosen">
+            <div class="col-sm-10">
+            <input type="text" class="col-sm-10" name="nama_dosen">
+            </div>
         </div>
 
-        <div>
-            <label for="">
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">
                 Prodi
             </label>
-            <input type="text" name="prodi">
+            <div class="col-sm-10">
+            <input type="text" class="col-sm-10" name="prodi">
+            </div>
         </div>
 
-        <div>
-            <label for="">
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">
                 No HP
             </label>
-            <input type="number" name="no_hp">
+            <div class="col-sm-10">
+            <input type="number" class="col-sm-10" name="no_hp">
+            </div>
         </div>
-        <div>
-            <label for="">
+
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">
                 Email
             </label>
-            <input type="email" name="email">
+            <div class="col-sm-10">
+            <input type="email" class="col-sm-10" name="email">
+            </div>
         </div>
-        <div>
-            <label for="">
+
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">
                 Password
             </label>
-            <input type="password" name="password">
+            <div class="col-sm-10">
+            <input type="password" class="col-sm-10" name="password">
+            </div>
         </div>
+        
         <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
     </form>
 
