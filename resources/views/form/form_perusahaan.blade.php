@@ -12,73 +12,93 @@
         </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Status Kerja Sama
         </label>
+        <div class="col-sm-10">
         <input type="text" name="status_kerja_sama">
+        </div>
     </div>
 
-    <div>
-        <label for="">
-            Nomor Telepon
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
+            Nomor Telpon
         </label>
-        <input type="number" name="nomor_telepon">
+        <div class="col-sm-10">
+        <input type="text" name="nomor_telepon">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Email Perusahaan
         </label>
+        <div class="col-sm-10">
         <input type="text" name="email_perusahaan">
+        </div>
     </div>
 
-    <div>
-      <label for="">
-          MOA
-      </label>
-      <input type="text" name="moa">
-  </div>
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
+            MOA
+        </label>
+        <div class="col-sm-10">
+        <input type="text" name="moa">
+        </div>
+    </div>
 
-  <div>
-      <label for="">
+  <div class= "mb-3 row">
+      <label for="" class="col-sm-2 col-form-label">
           MOU
       </label>
+        <div class="col-sm-10">
       <input type="text" name="email_perusahaan">
+        </div>
   </div>
-  <div>
-    <label for="">
+
+  <div class= "mb-3 row">
+    <label for="" class="col-sm-2 col-form-label">
         Provinsi
     </label>
+    <div class="col-sm-10">
     <input type="text" name="provinsi">
 </div>
-
-<div>
-    <label for="">
-        Kabupaten/Kota
-    </label>
-    <input type="text" name="kabupaten_kota">
 </div>
 
-<div>
-    <label for="">
+<div  class= "mb-3 row">
+    <label for="" class="col-sm-2 col-form-label">
+        Kabupaten/Kota
+    </label>
+    <div class="col-sm-10">
+    <input type="text" name="kabupaten_kota">
+</div>
+</div>
+
+<div class= "mb-3 row">
+    <label for="" >
         Kode Pos
     </label>
     <input type="number" name="kode_pos">
 </div>
 
 <div>
-    <label for="">
+    <label for="" class="col-sm-2 col-form-label">
         Jalan
     </label>
+    <div class="col-sm-10">
     <input type="text" name="jalan">
 </div>
-<div>
+</div>
+
+<div class= "mb-3 row">
 <fieldset id="buildyourform">
     <label for="">
         Bidang Perusahaan :
     </label>
+    <div class="col-sm-10">
     <input type="text" name="bidang_perusahaan[]">
+</div>
 </fieldset>
 <input type="button" value="Tambahkan bidang perusahaan" class="add" id="add" />
 <button type="submit" value="Submit">Submit</button>
