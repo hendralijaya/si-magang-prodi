@@ -9,6 +9,11 @@
         </label>
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="nama_mentor">
+        @error('nama_mentor')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -18,6 +23,11 @@
         </label>
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="email_mentor">
+        @error('email_mentor')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -27,6 +37,11 @@
         </label>
         <div class="col-sm-10">
         <input type="number" class="col-sm-10" name="no_hp">
+        @error('nomor_telepon')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
   <div class= "mb-3 row">
@@ -34,6 +49,11 @@
       Asal Perusahaan 
     </label>
     <div class="col-sm-10">
+    @error('id_perusahaan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
     <select name="id_perusahaan" id="" class="col-sm-10">
       @foreach ($perusahaan as $p)
         <option value="{{ $p->id_perusahaan }}">{{ $p->nama_perusahaan }}</option>

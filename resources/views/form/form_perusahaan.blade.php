@@ -9,6 +9,11 @@
         </label>
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="nama_perusahaan">
+        @error('nama_perusahaan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -22,6 +27,11 @@
             <option value="MOA">MOA</option>
             <option value="MOU">MOU</option>
         </select>
+        @error('status_kerja_sama')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -31,6 +41,11 @@
         </label>
         <div class="col-sm-10">
         <input type="number" class="col-sm-10" name="nomor_telepon">
+        @error('nomor_telepon')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -40,6 +55,11 @@
         </label>
         <div class="col-sm-10">
         <input type="email" class="col-sm-10" name="email_perusahaan">
+        @error('email_perusahaan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -71,6 +91,11 @@
         <option value="{{ $p->nama_provinsi }}">{{ $p->nama_provinsi }}</option>
       @endforeach
     </select>
+    @error('provinsi')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
     </div>
 </div>
 
@@ -80,6 +105,11 @@
     </label>
     <div class="col-sm-10">
     <input type="text" class="col-sm-10" name="kabupaten_kota">
+    @error('kabupaten_kota')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
 </div>
 </div>
 
@@ -89,6 +119,11 @@
     </label>
     <div class="col-sm-10">
     <input type="number" class="col-sm-10" name="kode_pos">
+    @error('kode_pos')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
     </div>
 </div>
 
@@ -98,6 +133,11 @@
     </label>
     <div class="col-sm-10">
     <input type="text" class="col-sm-10" name="jalan">
+    @error('jalan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
 </div>
 </div>
 
