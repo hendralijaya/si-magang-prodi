@@ -14,73 +14,94 @@
     <h3>Form Mahasiswa</h3>
 <form action="{{ route('mahasiswa.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div>
-        <label for="">
+    <div class = "mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             NIM
         </label>
+        <div class="col-sm-10">
         <input type="number" name="nim">
     </div>
+    </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Nama Mahasiswa
         </label>
-        <input type="text" name="nama_mahasiswa">
+        <div class="col-sm-10">
+            <input type="text" name="nama_mahasiswa">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             No HP
         </label>
-        <input type="number" name="no_hp">
+        <div class= "col-sm-10">
+            <input type="number" name="no_hp">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Jurusan
         </label>
-        <input type="text" name="jurusan">
+        <div class= "col-sm-10">
+            <input type="text" name="jurusan">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             KHS
         </label>
-        <input type="file" name="khs">
+        <div class= "col-sm-10">
+            <input type="file" name="khs">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Peminatan
         </label>
-        <input type="text" name="peminatan">
+        <div class= "col-sm-10">
+            <input type="text" name="peminatan">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Tahun Angkatan
         </label>
-        <input type="number" name="tahun_angkatan">
+        <div class= "col-sm-10">
+            <input type="number" name="tahun_angkatan">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Asuransi Kesehatan
         </label>
-        <input type="file" name="asuransi_kesehatan">
-    </div>
-    <div>
-        <label for="">
-            Email
-        </label>
-        <input type="email" name="email">
+        <div class= "col-sm-10">
+            <input type="file" name="asuransi_kesehatan">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
+            Email
+        </label>
+        <div class= "col-sm-10">
+            <input type="email" name="email">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Password
         </label>
-        <input type="password" name="password">
+        <div class= "col-sm-10">
+            <input type="password" name="password">
+        </div>
     </div>
     <button type="submit" value="Submit">Submit</button>
 </form>
