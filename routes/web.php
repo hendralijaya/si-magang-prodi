@@ -39,7 +39,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login.aut
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 // Route Mahasiswa
-Route::get('/home', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.dashboard')->middleware('mahasiswa');
+Route::get('/homemahasiswa', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.dashboard')->middleware('mahasiswa');
 Route::get('/mahasiswa/profile', [DashboardMahasiswaController::class, 'profile'])->name('mahasiswa.profile')->middleware('mahasiswa');
 Route::get('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'formApplyMagang'])->name('mahasiswa.formApplyMagang')->middleware('mahasiswa');
 Route::post('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'storeApplyMagang'])->name('mahasiswa.storeApplyMagang')->middleware('mahasiswa');
@@ -47,7 +47,7 @@ Route::get('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'form
 Route::post('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'storeMagang'])->name('mahasiswa.storeMagang')->middleware('mahasiswa');
 
 // Route Admin
-Route::get('/home', [DashboardAdminController::class, 'index'])->name('admin.dashboard')->middleware('admin');
+Route::get('/homeadmin', [DashboardAdminController::class, 'index'])->name('admin.dashboard')->middleware('admin');
 Route::resource('/admin/perusahaan', PerusahaanController::class)->middleware('admin');
 Route::resource('/admin/dosen', DosenController::class)->middleware('admin');
 Route::resource('/admin/mahasiswa', MahasiswaController::class)->middleware('admin');

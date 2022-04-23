@@ -54,7 +54,7 @@ class MahasiswaController extends Controller
             'peminatan' => 'required',
             'tahun_angkatan' => 'required',
             'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'email' => 'required|email:dns|unique:user',
+            'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8'
         ]);
         $validatedDataMahasiswa = [
@@ -69,7 +69,7 @@ class MahasiswaController extends Controller
         ];
         $validatedDataUser = [
             'email' => $validatedData['email'],
-            'password' => $validatedData['password'],
+            'password' => bcrypt($validatedData['password']),
             'id_role' => 2
         ];
         

@@ -23,6 +23,13 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
+                if (auth()->user()->id_role == '1') {
+                    return redirect()->route('admin.dashboard');
+                } else if (auth()->user()->id_role == '2') {
+                    return redirect()->route('mahasiswa.dashboard');
+                } else if (auth()->user()->id_role == '3') {
+                    return redirect()->route('admin.dashboard');
+                }
                 return redirect(RouteServiceProvider::HOME);
             }
         }

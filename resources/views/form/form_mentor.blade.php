@@ -23,10 +23,10 @@
 
     <div class= "mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
-            Nomor Telepon
+            Nomor Handphone
         </label>
         <div class="col-sm-10">
-        <input type="number" class="col-sm-10" name="nomor_telepon">
+        <input type="number" class="col-sm-10" name="no_hp">
         </div>
     </div>
   <div class= "mb-3 row">
@@ -41,6 +41,7 @@
     </select>
     </div>
 </div>
+<button type="submit" value="Submit">Submit</button>
 </form>
-    <button type="submit" value="Submit">Submit</button>
+    
 @endsection

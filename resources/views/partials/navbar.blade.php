@@ -20,13 +20,16 @@
               <a class="nav-link {{ Request::is('admin/mahasiswa') ? 'active' : '' }}" href="{{ route('mahasiswa.index') }}">Mahasiswa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ Request::is('mentor') ? 'active' : '' }}" href="{{ route('mentor.index') }}">Mentor</a>
+              <a class="nav-link {{ Request::is('admin/mentor') ? 'active' : '' }}" href="{{ route('mentor.index') }}">Mentor</a>
             </li>
-          @elseif (Auth::user()->id_role == '2' || Auth::user()->id_role == '3')
+          @elseif (Auth::user()->id_role == '3')
             <li class="nav-item">
               <a class="nav-link {{ Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'active' : '' }}" href="{{ route(Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'mahasiswa' : 'dosen' . '.profile') }}">Profile</a>
             </li>
           @elseif (Auth::user()->id_role == '2')
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'active' : '' }}" href="{{ route(Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'mahasiswa' : 'dosen' . '.profile') }}">Profile</a>
+            </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Form

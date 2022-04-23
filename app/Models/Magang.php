@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Magang extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'magang';
     protected $fillable = [
         'id_magang',
@@ -21,6 +22,7 @@ class Magang extends Model
         'buku_aktivitas_harian_kerja_praktik',
         'surat_keterangan_bebas_akademik',
         'nim',
-        'nik'
+        'nik',
+        'id_mentor'
     ];
 }

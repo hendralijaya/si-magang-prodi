@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplyMagang extends Model
 {
     use HasFactory;
+    public $timestamps = false;
     protected $table = 'mahasiswa_apply_magang_perusahaan';
     protected $fillable = [
         'nim',

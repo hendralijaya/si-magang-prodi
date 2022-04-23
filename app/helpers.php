@@ -4,11 +4,11 @@ if(!function_exists('checkRole')){
 function checkRole($role)
 {
     if ($role == '1') {
-        return 'home';
+        return 'homeadmin';
     } else if($role == '2') {
-        return 'home';
+        return 'homemahasiswa';
     } else if($role == '3') {
-        return 'home';
+        return 'homeadmin';
     }
 }
 }
