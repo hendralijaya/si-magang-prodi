@@ -14,45 +14,57 @@
     <h3>Form Apply Magang</h3>
     <form action="{{ route('mahasiswa.storeApplyMagang') }}" method="POST">
       @csrf
-      <div>
-        <label for="">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
         Foto Mahasiswa 
         </label>
-        <input type="file" name="foto_mahasiswa"
+        <div class="col-sm-10">
+        <input type="file" class="col-sm-10" name="foto_mahasiswa"
         accept="image/png, image/jpeg">
+        </div>
       </div>
       
-      <div>
-        <label for="">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
           Formulir Pendaftaran Kerja Praktik
         </label>
-          <input type="file" name="formulir_pendaftaran_kerja_praktik">  
+        <div class="col-sm-10">
+        <input type="file" class="col-sm-10" name="formulir_pendaftaran_kerja_praktik">
+        </div>  
       </div>
 
-      <div>
-        <label for="">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
           Surat Pengantar Kerja Praktik
         </label>
-          <input type="file" name="surat_pengantar_kerja_praktik">
+        <div class="col-sm-10">
+        <input type="file" class="col-sm-10" name="surat_pengantar_kerja_praktik">
+        </div>
       </div>
 
-      <div>
-        <label for="">CV</label>
-        <input type="file" name="cv">   
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">CV</label>
+        <div class="col-sm-10">
+        <input type="file" class="col-sm-10" name="cv">
+        </div>   
       </div>
 
-      <div>
-        <label for="">Cover Letter</label>
-          <input type="file" name="cover_letter">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">Cover Letter</label>
+        <div class="col-sm-10">
+        <input type="file" class="col-sm-10" name="cover_letter">
+        </div>
       </div>
 
-      <div>
-        <label for="">Tanggal Apply:</label>
-          <input type="date" name="tanggal_apply">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">Tanggal Apply:</label>
+        <div class="col-sm-10">
+        <input type="date" class="col-sm-10" name="tanggal_apply">
+        </div>
       </div>
       
-      <div>
-        <label for="cars">Status Apply:</label>
+      <div class="mb-3 row">
+        <label for="cars" class="col-sm-2 col-form-label">Status Apply:</label>
 
         <select name="status_apply">
           <option value="ACC">Accept</option>
@@ -61,12 +73,15 @@
         </select>
       </div>
 
-      <div>
-        <label for="">Tanggal Respon:</label>
-          <input type="date" name="tanggal_respon">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">Tanggal Respon:</label>
+        <div class="col-sm-10">
+        <input type="date" class="col-sm-10" name="tanggal_respon">
+        </div>
       </div>
-      <div>
-        <label for="">Nama Perusahaan : </label>
+
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">Nama Perusahaan : </label>
         <select name="id_perusahaan" id="">
           <option value=""></option>
           @foreach ($perusahaan as $p)
@@ -75,60 +90,76 @@
         </select>
       </div>
       <h6>Jika perusahaan tidak ada di dropdown maka isi dibawah ini dan kosongkan dropdown</h6>
-      <div>
-        <label for="">
+      <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Nama Perusahaan
         </label>
-        <input type="text" name="nama_perusahaan">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="nama_perusahaan">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Status Kerja Sama
         </label>
-        <input type="text" name="status_kerja_sama">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="status_kerja_sama">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Nomor Telepon
         </label>
-        <input type="number" name="nomor_telepon">
+        <div class="col-sm-10">
+        <input type="number" class="col-sm-10" name="nomor_telepon">
+        </div>
     </div>
 
-    <div>
-        <label for="">
+    <div class="mb-3 row">
+        <label for="" class="col-sm-2 col-form-label">
             Email Perusahaan
         </label>
-        <input type="text" name="email_perusahaan">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="email_perusahaan">
+        </div>
     </div>
 
-    <div>
-      <label for="">
+    <div class="mb-3 row">
+      <label for="" class="col-sm-2 col-form-label">
           Provinsi Perusahaan
       </label>
-      <input type="text" name="provinsi">
+      <div class="col-sm-10">
+      <input type="text" class="col-sm-10" name="provinsi">\
+      </div>
     </div>
 
-    <div>
-      <label for="">
+    <div class="mb-3 row">
+      <label for="" class="col-sm-2 col-form-label">
           Kabupaten/Kota Perusahaan
       </label>
-      <input type="text" name="kabupaten_kota">
+      <div class="col-sm-10">
+      <input type="text" class="col-sm-10" name="kabupaten_kota">
+      </div>
     </div>
 
-    <div>
-      <label for="">
+    <div class="mb-3 row">
+      <label for="" class="col-sm-2 col-form-label">
           Kode Pos Perusahaan
       </label>
-      <input type="text" name="kode_pos">
+      <div class="col-sm-10">
+      <input type="text" class="col-sm-10" name="kode_pos">
+      </div>
     </div>
 
-    <div>
-      <label for="">
+    <div class="mb-3 row">
+      <label for="" class="col-sm-2 col-form-label">
           Jalan Perusahaan
       </label>
-      <input type="text" name="jalan">
+      <div class="col-sm-10">
+      <input type="text" class="col-sm-10" name="jalan">
+      </div>
     </div>
 
       <button type="submit" value="Submit">Submit</button>

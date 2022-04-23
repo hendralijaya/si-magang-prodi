@@ -99,17 +99,82 @@
         Bidang Perusahaan
     
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Teknologi" name="bidang_perusahaan" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
-        Default checkbox
+        Teknologi
         </label>
     </div>
+
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-        <label class="form-check-label" for="flexCheckChecked">
-          Checked checkbox
+        <input class="form-check-input" type="checkbox" value="Transportasi" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Transportasi
         </label>
     </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Properti" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Properti
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Marketing" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Marketing
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Keuangan" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Keuangan
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Peternakan" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Peternakan
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Kontraktor" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Kontraktor
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Jasa Konsultan" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Jasa Konsultan
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Survei" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Survei
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Fashion" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Fashion
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Arsitektur" name="bidang_perusahaan" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Arsitektur
+        </label>
+    </div>
+
 </label>
     
 </div>
