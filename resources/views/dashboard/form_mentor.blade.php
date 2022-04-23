@@ -13,27 +13,34 @@
   <body>
     <h3>Form Mentor</h3>
 
-    <div>
-        <label for="">
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Nama Mentor
         </label>
-        <input type="text" name="nama_mentor">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="nama_mentor">
+        </div>
     </div>
 
-    <div>
-        <label for="">
-            No HP
-        </label>
-        <input type="number" name="no_hp">
-    </div>
-
-    <div>
-        <label for="">
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
             Email Mentor
         </label>
-        <input type="text" name="email_mentor">
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="email_mentor">
+        </div>
     </div>
 
+    <div class= "mb-3 row">
+        <label for=""  class="col-sm-2 col-form-label">
+            Nomor Telepon
+        </label>
+        <div class="col-sm-10">
+        <input type="number" class="col-sm-10" name="nomor_telepon">
+        </div>
+    </div>
+    <button type="submit" value="Submit">Submit</button>
+    
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

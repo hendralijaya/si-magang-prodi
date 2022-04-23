@@ -16,7 +16,7 @@
         <label for=""  class="col-sm-2 col-form-label">
             Status Kerja Sama
         </label>
-        
+
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="status_kerja_sama">
         </div>
@@ -24,7 +24,7 @@
 
     <div class= "mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
-            Nomor Telpon
+            Nomor Telepon
         </label>
         <div class="col-sm-10">
         <input type="text" class="col-sm-10" name="nomor_telepon">
