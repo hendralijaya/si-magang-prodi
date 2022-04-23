@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AlamatPerusahaan;
+use App\Models\Provinsi;
 use App\Models\Perusahaan;
 use Illuminate\Http\Request;
+use App\Models\AlamatPerusahaan;
+use App\Models\BidangPerusahaan;
 use Illuminate\Support\Facades\Storage;
 
 class PerusahaanController extends Controller
@@ -31,6 +33,7 @@ class PerusahaanController extends Controller
     {
         return view('form.form_perusahaan',[
             'title' => 'Tambah Perusahaan',
+            'provinsi' => Provinsi::all()
         ]);
     }
 
@@ -42,21 +45,21 @@ class PerusahaanController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->post());
         $validatedDataPerusahaan = $request->validate([
             'nama_perusahaan' => 'required',
-            'status_kerja_sama' => 'required',
             'nomor_telepon' => 'required',
             'email_perusahaan' => 'required',
             'moa' => 'nullable|mimes:pdf|max:2048',
             'mou' => 'nullable|mimes:pdf|max:2048'
         ]);
         $validatedDataAlamatPerusahaan = $request->validate([
-            'id_perusahaan' => 'required',
             'provinsi' => 'required',
             'kabupaten_kota' => 'required',
             'kode_pos' => 'required',
             'jalan' => 'required'
+        ]);
+        $validatedDataBidangPerusahaan = $request->validate([
+            'bidang_perusahaan' => 'required'
         ]);
         if($request->file('moa')){
             $validatedDataPerusahaan['moa'] = $request->file('moa')->store('moa');
@@ -64,8 +67,18 @@ class PerusahaanController extends Controller
         if($request->file('mou')){
             $validatedDataPerusahaan['mou'] = $request->file('mou')->store('mou');
         }
-        Perusahaan::create($validatedDataPerusahaan);
+        
+        $idPerusahaan = Perusahaan::create($validatedDataPerusahaan)->id;
+        
+        $validatedDataAlamatPerusahaan['id_perusahaan'] = $idPerusahaan;
+        
         AlamatPerusahaan::create($validatedDataAlamatPerusahaan);
+        foreach($validatedDataBidangPerusahaan['bidang_perusahaan'] as $bidang){
+            BidangPerusahaan::create([
+                'id_perusahaan' => $idPerusahaan,
+                'bidang_perusahaan' => $bidang
+            ]);
+        }
         return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully stored');
     }
 

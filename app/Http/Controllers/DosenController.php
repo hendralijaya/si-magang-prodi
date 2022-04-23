@@ -16,7 +16,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dosen = DB::select("SELECT * FROM dosen ORDER BY nama_dosen ASC");
+        $dosen = DB::select("SELECT * FROM dosen");
         return view('dashboard.admin.dosen', [
             'dosen' => $dosen,
             'title' => 'Dosen'
@@ -30,7 +30,9 @@ class DosenController extends Controller
      */
     public function create()
     {
-        return view('form.form_dosen');
+        return view('form.form_dosen', [
+            'title' => 'Tambah Dosen'
+        ]);
     }
 
     /**
@@ -49,12 +51,12 @@ class DosenController extends Controller
         ]);
 
         $validatedDataUser = $request->validate([
-            'email' => 'required|email:dns|unique:user',
+            'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8',
         ]);
         $validatedDataUser['id_role'] = 3;
         $validatedDataUser['password'] = bcrypt($validatedDataUser['password']);
-        
+
         $idUser = User::create($validatedDataUser)->id;
         $validatedDataDosen['id_user'] = $idUser;
         Dosen::create($validatedDataDosen);

@@ -13,12 +13,15 @@
     </div>
 
     <div class= "mb-3 row">
-        <label for=""  class="col-sm-2 col-form-label">
-            Status Kerja Sama
+        <label for="" class="col-sm-2 col-form-label">
+          Status Kerja Sama
         </label>
-
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="status_kerja_sama">
+        <select name="status_kerja_sama" id="" class="col-sm-10">
+            <option value="">Belum Ada</option>
+            <option value="MOA">MOA</option>
+            <option value="MOU">MOU</option>
+        </select>
         </div>
     </div>
 
@@ -27,7 +30,7 @@
             Nomor Telepon
         </label>
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="nomor_telepon">
+        <input type="number" class="col-sm-10" name="nomor_telepon">
         </div>
     </div>
 
@@ -36,7 +39,7 @@
             Email Perusahaan
         </label>
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="email_perusahaan">
+        <input type="email" class="col-sm-10" name="email_perusahaan">
         </div>
     </div>
 
@@ -54,17 +57,21 @@
           MOU
       </label>
         <div class="col-sm-10">
-      <input type="file" class="col-sm-10" name="email_perusahaan">
+      <input type="file" class="col-sm-10" name="mou">
         </div>
   </div>
 
   <div class= "mb-3 row">
     <label for="" class="col-sm-2 col-form-label">
-        Provinsi
+      Provinsi
     </label>
     <div class="col-sm-10">
-    <input type="text" class="col-sm-10" name="provinsi">
-</div>
+    <select name="provinsi" id="" class="col-sm-10">
+      @foreach ($provinsi as $p)
+        <option value="{{ $p->nama_provinsi }}">{{ $p->nama_provinsi }}</option>
+      @endforeach
+    </select>
+    </div>
 </div>
 
 <div  class= "mb-3 row">
@@ -97,81 +104,87 @@
 <div class="mb-3 row">
     <label for="" class="col-sm-2 col-form-label">
         Bidang Perusahaan
-    
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Teknologi" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Teknologi" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Teknologi
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Transportasi" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Transportasi" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Transportasi
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Properti" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Properti" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Properti
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Marketing" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Marketing" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Marketing
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Keuangan" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Keuangan" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Keuangan
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Peternakan" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Peternakan" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Peternakan
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Kontraktor" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Kontraktor" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Kontraktor
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Jasa Konsultan" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Jasa Konsultan" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Jasa Konsultan
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Survei" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Survei" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Survei
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Fashion" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Fashion" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Fashion
         </label>
     </div>
 
     <div class="col-sm-10 form-check">
-        <input class="form-check-input" type="checkbox" value="Arsitektur" name="bidang_perusahaan" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="Arsitektur" name="bidang_perusahaan[]" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
         Arsitektur
+        </label>
+    </div>
+
+    <div class="col-sm-10 form-check">
+        <input class="form-check-input" type="checkbox" value="Migas" name="bidang_perusahaan[]" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+        Migas
         </label>
     </div>
 

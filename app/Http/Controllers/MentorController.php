@@ -31,7 +31,8 @@ class MentorController extends Controller
     public function create()
     {
         return view('form.form_mentor', [
-            'perusahaan' => Perusahaan::all()
+            'perusahaan' => Perusahaan::all(),
+            'title' => 'Tambah Mentor'
         ]);
     }
 

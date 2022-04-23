@@ -20,6 +20,11 @@
         </label>
         <div class="col-sm-10">
         <input type="number" class="col-sm-10" name="nim">
+        @error('nim')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
     </div>
     </div>
 
@@ -29,6 +34,11 @@
         </label>
         <div class="col-sm-10">
             <input type="text" class="col-sm-10" name="nama_mahasiswa">
+            @error('nama_mahasiswa')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -38,6 +48,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="number" class="col-sm-10" name="no_hp">
+            @error('no_hp')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -47,6 +62,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="text" class="col-sm-10" name="jurusan">
+            @error('jurusan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -56,6 +76,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="file" class="col-sm-10" name="khs">
+            @error('khs')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -65,6 +90,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="text" class="col-sm-10" name="peminatan">
+            @error('peminatan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -74,6 +104,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="number" class="col-sm-10" name="tahun_angkatan">
+            @error('tahun_angkatan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -83,6 +118,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="file" class="col-sm-10" name="asuransi_kesehatan">
+            @error('asuransi_kesehatan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -92,6 +132,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="email" class="col-sm-10" name="email">
+            @error('email')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
 
@@ -101,6 +146,11 @@
         </label>
         <div class= "col-sm-10">
             <input type="password" class="col-sm-10" name="password">
+            @error('password')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+        @enderror
         </div>
     </div>
     <button type="submit" value="Submit">Submit</button>

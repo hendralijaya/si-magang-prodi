@@ -5,15 +5,10 @@
 @endsection
 
 @section('container')
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+
 <div class="col-md-3 d-md-inline">
     <a class="btn btn-primary" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
 </div>
-
 <div class='container'>
     <div class="row">
         <div class="col-md-3">
@@ -36,7 +31,11 @@
         </div>
     </div>
 </div>
-
+@if (session()->has('success'))
+  <div class="alert alert-success col-lg-8" role="alert">
+    {{ session('success') }}
+  </div>
+@endif
     <table>
         <tr>
             <th>No. </th>

@@ -32,7 +32,9 @@ class MahasiswaController extends Controller
      */
     public function create()
     {
-        return view('form.form_mahasiswa');
+        return view('form.form_mahasiswa', [
+            'title' => 'Tambah Mahasiswa'
+        ]);
     }
 
     /**
@@ -43,7 +45,7 @@ class MahasiswaController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedDataMahasiswa = $request->validate([
+        $validatedData = $this->validate($request, [
             'nim' => 'required|unique:mahasiswa',
             'nama_mahasiswa' => 'required',
             'no_hp' => 'required',
@@ -51,19 +53,25 @@ class MahasiswaController extends Controller
             'khs' => 'required|mimes:pdf|max:2048',
             'peminatan' => 'required',
             'tahun_angkatan' => 'required',
-            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-        $validatedDataAlamatMahasiswa = $request->validate([
-            'nim' => 'required',
-            'provinsi' => 'required',
-            'kabupaten_kota' => 'required',
-            'kode_pos' => 'required',
-            'jalan' => 'required'
-        ]);
-        $validatedDataUser = $request->validate([
+            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|email:dns|unique:user',
-            'password' => 'required|min:8',
+            'password' => 'required|min:8'
         ]);
+        $validatedDataMahasiswa = [
+            'nim' => $validatedData['nim'],
+            'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
+            'no_hp' => $validatedData['no_hp'],
+            'jurusan' => $validatedData['jurusan'],
+            'khs' => $validatedData['khs'],
+            'peminatan' => $validatedData['peminatan'],
+            'tahun_angkatan' => $validatedData['tahun_angkatan'],
+            'asuransi_kesehatan' => $validatedData['asuransi_kesehatan']
+        ];
+        $validatedDataUser = [
+            'email' => $validatedData['email'],
+            'password' => $validatedData['password'],
+            'id_role' => 2
+        ];
         
         if($request->file('khs')){
             $validatedDataMahasiswa['khs'] = $request->file('khs')->store('khs');
@@ -71,11 +79,9 @@ class MahasiswaController extends Controller
         if($request->file('asuransi_kesehatan')){
             $validatedDataMahasiswa['asuransi_kesehatan'] = $request->file('asuransi_kesehatan')->store('asuransi_kesehatan');
         }
-        $validatedDataUser['id_role'] = 2;
         $idUser = User::create($validatedDataUser)->id;
         $validatedDataMahasiswa['id_user'] = $idUser;
         Mahasiswa::create($validatedDataMahasiswa);
-        AlamatMahasiswa::create($validatedDataAlamatMahasiswa);
         
         return redirect()->intended(route('mahasiswa.index'))->with('success','Data mahasiswa has been successfully added');
     }
