@@ -125,13 +125,11 @@ class DashboardMahasiswaController extends Controller
 
     public function storeMagang(Request $request)
     {
-        $validatedDataMentor = $request->validate([
+        $validatedData = $request->validate([
             'nama_mentor' => 'required',
             'no_hp' => 'required',
             'email_mentor' => 'required',
             'id_perusahaan' => 'required',
-        ]);
-        $validatedDataMagang = $request->validate([
             'tanggal_pengambilan' => 'required',
             'tahun_ajaran' => 'required',
             'semester' => 'required',
@@ -141,6 +139,23 @@ class DashboardMahasiswaController extends Controller
             'surat_keterangan_bebas_akademik' => 'required',
             'id_perusahaan' => 'required',
             'nik' => 'required'
+        ]);
+        $validatedDataMentor = $request->validate([
+            'nama_mentor' => $validatedData['nama_mentor'],
+            'no_hp' => $validatedData['no_hp'],
+            'email_mentor' => $validatedData['email_mentor'],
+            'id_perusahaan' => $validatedData['id_perusahaan'],
+        ]);
+        $validatedDataMagang = $request->validate([
+            'tanggal_pengambilan' => $validatedData['tanggal_pengambilan'],
+            'tahun_ajaran' => $validatedData['tahun_ajaran'],
+            'semester' => $validatedData['semester'],
+            'laporan_kerja_praktik' => $validatedData['laporan_kerja_praktik'],
+            'formulir_bimbingan_kerja_praktik' => $validatedData['formulir_bimbingan_kerja_praktik'],
+            'buku_aktivitas_harian_kerja_praktik' => $validatedData['buku_aktivitas_harian_kerja_praktik'],
+            'surat_keterangan_bebas_akademik' => $validatedData['surat_keterangan_bebas_akademik'],
+            'id_perusahaan' => $validatedData['id_perusahaan'],
+            'nik' => $validatedData['nik']
         ]);
         $validatedDataMagang['laporan_kerja_praktik'] = $request->file('laporan_kerja_praktik')->store('dokumen_magang/laporan_kerja_praktik');
         $validatedDataMagang['formulir_bimbingan_kerja_praktik'] = $request->file('formulir_bimbingan_kerja_praktik')->store('dokumen_magang/formulir_bimbingan_kerja_praktik');
