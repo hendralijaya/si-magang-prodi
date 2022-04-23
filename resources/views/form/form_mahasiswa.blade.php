@@ -19,7 +19,7 @@
             NIM
         </label>
         <div class="col-sm-10">
-        <input type="number" name="nim">
+        <input type="number" class="col-sm-10" name="nim">
     </div>
     </div>
 
@@ -28,7 +28,7 @@
             Nama Mahasiswa
         </label>
         <div class="col-sm-10">
-            <input type="text" name="nama_mahasiswa">
+            <input type="text" class="col-sm-10" name="nama_mahasiswa">
         </div>
     </div>
 
@@ -37,7 +37,7 @@
             No HP
         </label>
         <div class= "col-sm-10">
-            <input type="number" name="no_hp">
+            <input type="number" class="col-sm-10" name="no_hp">
         </div>
     </div>
 
@@ -46,7 +46,7 @@
             Jurusan
         </label>
         <div class= "col-sm-10">
-            <input type="text" name="jurusan">
+            <input type="text" class="col-sm-10" name="jurusan">
         </div>
     </div>
 
@@ -55,7 +55,7 @@
             KHS
         </label>
         <div class= "col-sm-10">
-            <input type="file" name="khs">
+            <input type="file" class="col-sm-10" name="khs">
         </div>
     </div>
 
@@ -64,7 +64,7 @@
             Peminatan
         </label>
         <div class= "col-sm-10">
-            <input type="text" name="peminatan">
+            <input type="text" class="col-sm-10" name="peminatan">
         </div>
     </div>
 
@@ -73,7 +73,7 @@
             Tahun Angkatan
         </label>
         <div class= "col-sm-10">
-            <input type="number" name="tahun_angkatan">
+            <input type="number" class="col-sm-10" name="tahun_angkatan">
         </div>
     </div>
 
@@ -82,7 +82,7 @@
             Asuransi Kesehatan
         </label>
         <div class= "col-sm-10">
-            <input type="file" name="asuransi_kesehatan">
+            <input type="file" class="col-sm-10" name="asuransi_kesehatan">
         </div>
     </div>
 
@@ -91,7 +91,7 @@
             Email
         </label>
         <div class= "col-sm-10">
-            <input type="email" name="email">
+            <input type="email" class="col-sm-10" name="email">
         </div>
     </div>
 
@@ -100,7 +100,7 @@
             Password
         </label>
         <div class= "col-sm-10">
-            <input type="password" name="password">
+            <input type="password" class="col-sm-10" name="password">
         </div>
     </div>
     <button type="submit" value="Submit">Submit</button>
