@@ -9,6 +9,9 @@
     {{ session('success') }}
   </div>
 @endif
+<div class="col-md-3 d-md-inline">
+    <a class="btn btn-primary" href="{{ route('mentor.create') }}"> Add New Mentor </a>
+</div>
     <table>
         <tr>
             <th>No. </th>

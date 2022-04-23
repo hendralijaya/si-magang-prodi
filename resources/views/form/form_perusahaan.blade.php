@@ -190,9 +190,6 @@
     <div class="col-sm-10">
     <input type="text" class="col-sm-10" name="bidang_perusahaan[]">
 </div> --}}
-<input type="button" value="Tambahkan bidang perusahaan" class="add" id="add" />
-<button type="submit" value="Submit">Submit</button>
-</div>
 <button type="submit" value="Submit">Submit</button>
 </form>
     <!-- Optional JavaScript; choose one of the two! -->

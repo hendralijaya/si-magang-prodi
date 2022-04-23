@@ -30,7 +30,7 @@ class MentorController extends Controller
      */
     public function create()
     {
-        return view('dashboard.admin.form_mentor', [
+        return view('form.form_mentor', [
             'perusahaan' => Perusahaan::all()
         ]);
     }
