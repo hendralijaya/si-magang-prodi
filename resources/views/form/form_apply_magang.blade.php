@@ -1,13 +1,5 @@
-@extends('partials.main') @section('container')
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+@extends('partials.main') 
+@section('container')
 <h3>Form Apply Magang</h3>
 <form action="{{ route('mahasiswa.storeApplyMagang') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -89,17 +81,19 @@
       </div>
       
       <div class="mb-3 row">
-        <label for="cars" class="col-sm-2 col-form-label">Status Apply:</label>
+        <label for="cars" class="col-sm-2 col-form-label">Status Apply</label>
         @error('status_apply')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
         @enderror
-        <select name="status_apply">
+        <div class="col-sm-10">
+        <select name="status_apply" id="" class="col-sm-10">
           <option value="ACC">Accept</option>
           <option value="REJ">Reject</option>
           <option value="N/A">Unknown</option>
         </select>
+    </div>
       </div>
 
     <div class="mb-3 row">
@@ -190,7 +184,7 @@
           Provinsi Perusahaan
       </label>
       <div class="col-sm-10">
-      <input type="text" class="col-sm-10" name="provinsi">\
+      <input type="text" class="col-sm-10" name="provinsi">
       @error('provinsi')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
