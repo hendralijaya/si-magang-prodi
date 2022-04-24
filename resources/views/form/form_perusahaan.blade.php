@@ -22,16 +22,17 @@
           Status Kerja Sama
         </label>
         <div class="col-sm-10">
-        <select name="status_kerja_sama" id="" class="col-sm-10">
-            <option value="">Belum Ada</option>
-            <option value="MOA">MOA</option>
-            <option value="MOU">MOU</option>
-        </select>
         @error('status_kerja_sama')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
         @enderror
+        <select name="status_kerja_sama" id="" class="col-sm-10">
+            <option value="">Belum Ada</option>
+            <option value="MOA">MOA</option>
+            <option value="MOU">MOU</option>
+        </select>
+        
         </div>
     </div>
 
@@ -95,7 +96,7 @@
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
-        @enderror
+    @enderror
     </div>
 </div>
 
@@ -109,7 +110,7 @@
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
-        @enderror
+    @enderror
 </div>
 </div>
 
@@ -123,7 +124,7 @@
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
-        @enderror
+    @enderror
     </div>
 </div>
 
@@ -137,7 +138,7 @@
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
-        @enderror
+    @enderror
 </div>
 </div>
 

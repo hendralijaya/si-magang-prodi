@@ -61,12 +61,25 @@
             Jurusan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="jurusan">
-            @error('jurusan')
+        @error('jurusan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
         @enderror
+        <select name="jurusan" id="" class="col-sm-10">
+            <option value="Informatika">Informatika</option>
+            <option value="Sstem Informasi">Sistem Informasi</option>
+            <option value="Teknik Sipil">Teknik Sipil</option>
+            <option value="Arsitektur">Arsitektur</option>
+            <option value="Akuntansi">Akuntansi</option>
+            <option value="Seni Kuliner">Seni Kuliner</option>
+            <option value="Manajemen Bisnis">Manajemen Bisnis</option>
+            <option value="Perencanaan Wilayah Kota">Perencanaan Wilayah Kota</option>
+            <option value="Hospitality dan Pariwisata">Hospitality dan Pariwisata</option>
+            <option value="Manajemen Retail">Manajemen Retail</option>
+            <option value="Desain Interior">Desain Interior</option>
+            <option value="Desain Komunikasi Visual">Desain Komunikasi Visual</option>
+        </select>
         </div>
     </div>
 

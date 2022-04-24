@@ -136,8 +136,14 @@
             @endforeach
             </select>
         </div>
+
         <div>
             <label for="">Nama Dosen : </label>
+            @error('nik')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+            @enderror
             <select name="nik" id="">
             @foreach ($dosen as $d)
               <option value="{{ $d->nik }}">{{ $d->nama_dosen }}</option>
