@@ -76,9 +76,9 @@ class MentorController extends Controller
     public function edit($id)
     {
         $mentor = Mentor::where('id_mentor',$id)->first();
-        return view('dashboard.admin.edit_mentor', [
-            'mentor' => Mentor::where('id_mentor',$id)->first(),
-            'perusahaan' => $mentor->perusahaan
+        return view('form-edit.form_mentor', [
+            'mentor' => $mentor,
+            'title' => 'Edit Mentor'
         ]);
     }
 
@@ -95,7 +95,6 @@ class MentorController extends Controller
             'nama_mentor' => 'required',
             'no_hp' => 'required',
             'email_mentor' => 'required|email:dns|unique:mentor',
-            'id_perusahaan' => 'required'
         ]);
 
         Mentor::where('id_mentor',$id)->update($validatedDataMentor);
