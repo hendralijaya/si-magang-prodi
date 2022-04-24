@@ -17,11 +17,18 @@
               <a class="nav-link {{ Request::is('admin/dosen*') ? 'active' : '' }}" href="{{ route('dosen.index') }}">Dosen</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ Request::is('admin/mahasiswa') ? 'active' : '' }}" href="{{ route('mahasiswa.index') }}">Mahasiswa</a>
+              <a class="nav-link {{ Request::is('admin/mahasiswa*') ? 'active' : '' }}" href="{{ route('mahasiswa.index') }}">Mahasiswa</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link {{ Request::is('admin/mentor') ? 'active' : '' }}" href="{{ route('mentor.index') }}">Mentor</a>
+              <a class="nav-link {{ Request::is('admin/mentor*') ? 'active' : '' }}" href="{{ route('mentor.index') }}">Mentor</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/applymagang*') ? 'active' : '' }}" href="{{ route('applymagang.index') }}">Apply Magang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/magang*') ? 'active' : '' }}" href="{{ route('magang.index') }}">Magang</a>
+            </li>
+
           @elseif (Auth::user()->id_role == '3')
             <li class="nav-item">
               <a class="nav-link {{ Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'active' : '' }}" href="{{ route(Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'mahasiswa' : 'dosen' . '.profile') }}">Profile</a>
