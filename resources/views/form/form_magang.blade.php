@@ -7,24 +7,28 @@
             <label for="" class="col-sm-2 col-form-label">
             Tanggal Pengambilan :
             </label>
+            <div class= "col-sm-10">
             <input type="date" class="col-sm-10" name="tanggal_pengambilan">
             @error('tanggal_pengambilan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
             @enderror
+            </div>
         </div>
 
         <div class="mb-3 row">
             <label for="" class="col-sm-2 col-form-label">
                 Tahun Ajaran
             </label>
+            <div class= "col-sm-10">
             <input type="text" class="col-sm-10" name="tahun_ajaran">
             @error('tahun_ajaran')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
         @enderror
+        </div>
         </div>
 
         <div class="mb-3 row">
