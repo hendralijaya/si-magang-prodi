@@ -1,6 +1,6 @@
 @extends('partials.main')
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('css/table.css') }}">
+<link rel="stylesheet" href="{{ URL::asset('css/table.css'); }}">
 @endsection
 
 @section('container')
@@ -9,37 +9,34 @@
     {{ session('success') }}
   </div>
 @endif
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('mentor.create') }}"> Add New Mentor </a>
-</div>
     <table>
         <tr>
-            <th>No. </th>
-            <th> Nama Mentor </th>
-            <th> Nomor HP </ht>
-            <th> Email Mentor </th>
-            <th> Nama Perusahaan </th>
+            <th> No. </th>
+            <th> Nama Mahasiswa </th>
+            <th> Nama Perusahaan </ht>
+            <th> Tanggal Apply </th>
+            <th> Status Apply </th>
+            <th> Tanggal Respon </th>
             <th> Action </th>
         </tr>
-        @forelse ($mentor as $m)
+        @foreach ($applymagang as $am)
         <tr>
             <td>{{ $loop->iteration }}</td>
-            <td>{{ $m->nama_mentor }}</td>
-            <td>{{ $m->no_hp }}</td>
-            <td>{{ $m->email_mentor }}</td>
-            <td>{{ $m->nama_perusahaan }}</td>
+            <td>{{ $am->nama_mahasiswa }}</td>
+            <td>{{ $am->nama_perusahaan }}</td>
+            <td>{{ $am->tanggal_apply }}</td>
+            <td>{{ $am->status_apply }}</td>
+            <td>{{ $am->tanggal_respon }}</td>
             <td>
-                <a href="/admin/mentor/{{ $m->id_mentor }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-                <form action="/admin/mentor/{{ $m->id_mentor }}" method="post" class="btn3 btn-md d-md-inline">
+                <a href="/admin/applymagang/{{ $am->id_apply_magang }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
+            <form action="/admin/applymagang/{{ $am->id_apply_magang }}" method="post" class="btn3 btn-md d-md-inline">
                 @method('delete')
                 @csrf
                 <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
             </form>
             </td>
         </tr>
-        @empty
-            <h3>Mentor is null</h3>
-        @endforelse
+        @endforeach
         </table>
 
     <!-- Optional JavaScript; choose one of the two! -->

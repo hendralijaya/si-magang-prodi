@@ -4,10 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\DosenController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MagangController;
 use App\Http\Controllers\MentorController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\PerusahaanController;
+use App\Http\Controllers\ApplyMagangController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardDosenController;
 use App\Http\Controllers\DashboardMahasiswaController;
@@ -52,6 +54,8 @@ Route::resource('/admin/perusahaan', PerusahaanController::class)->middleware('a
 Route::resource('/admin/dosen', DosenController::class)->middleware('admin');
 Route::resource('/admin/mahasiswa', MahasiswaController::class)->middleware('admin');
 Route::resource('/admin/mentor', MentorController::class)->middleware('admin');
+Route::resource('/admin/applymagang', ApplyMagangController::class)->middleware('admin');
+Route::resource('/admin/magang', MagangController::class)->middleware('admin');
 
 // Route Dosen
 Route::get('/admin/profile', [DashboardDosenController::class, 'profile'])->name('dosen.profile')->middleware('dosen');
