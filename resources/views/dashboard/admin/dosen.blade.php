@@ -27,9 +27,9 @@
             <td>{{ $d->prodi }}</td>
             <td>{{ $d->no_hp }}</td>
             <td>
-                <a href="/admin/perusahaan/{{ $d->nik }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
-                <a href="/admin/perusahaan/{{ $d->nik }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-            <form action="/admin/perusahaan/{{ $d->nik }}" method="post" class="btn3 btn-md d-md-inline">
+                <a href="/admin/dosen/{{ $d->nik }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
+                <a href="/admin/dosen/{{ $d->nik }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
+            <form action="/admin/dosen/{{ $d->nik }}" method="post" class="btn3 btn-md d-md-inline">
                 @method('delete')
                 @csrf
                 <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>

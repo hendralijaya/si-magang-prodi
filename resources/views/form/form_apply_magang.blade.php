@@ -96,17 +96,17 @@
     </div>
       </div>
 
-    <div class="mb-3 row">
-        <label for="" class="col-sm-2 col-form-label">Tanggal Respon</label>
-        <div class="col-sm-10">
-        <input type="date" class="col-sm-10" name="tanggal_respon">
-        @error('tanggal_respon')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">Tanggal Respon</label>
+            <div class="col-sm-10">
+            <input type="date" class="col-sm-10" name="tanggal_respon">
+            @error('tanggal_respon')
+                <div class="alert alert-danger col-sm-10">
+                    <small>{{ $message }}</small>
+                </div>
+            @enderror
             </div>
-        @enderror
         </div>
-    </div>
 
     <div class="mb-3 row">
         <label for="" class="col-sm-2 col-form-label">Nama Perusahaan</label>

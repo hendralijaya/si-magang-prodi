@@ -1,0 +1,104 @@
+body {
+    background: linear-gradient(to bottom, #ff9900 0%, #ffffff 100%);
+}
+
+.b-example-divider {
+    height: 0px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border: solid rgba(0, 0, 0, 0.15);
+    border-width: 1px 0;
+    box-shadow: inset 0 0.5em 1.5em rgba(0, 0, 0, 0.1),
+        inset 0 0.125em 0.5em rgba(0, 0, 0, 0.15);
+}
+
+.form-control-dark {
+    color: rgb(255, 0, 0);
+    background-color: var(--bs-dark);
+    border-color: var(--bs-gray);
+}
+
+.form-control-dark:focus {
+    color: rgb(0, 0, 0);
+    background-color: var(--bs-dark);
+    border-color: #fff;
+    box-shadow: 0 0 0 0.25rem rgba(255, 255, 255, 0.25);
+}
+
+.bi {
+    vertical-align: -0.125em;
+    fill: currentColor;
+}
+
+.text-small {
+    font-size: 85%;
+}
+
+.dropdown-toggle {
+    outline: 0;
+}
+
+img {
+    position: relative;
+    width: 1350px;
+    margin-right: auto;
+    width: 100%;
+    height: 100%;
+}
+
+.container {
+    background: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+    text-align: center;
+}
+
+.container::before {
+    content: "";
+    display: block;
+    -webkit-filter: blur(1px) brightness(0.5);
+    -moz-filter: blur(1px) brightness(0.5);
+    -ms-filter: blur(1px) brightness(0.5);
+    -o-filter: blur(1px) brightness(0.5);
+    filter: blur(1px) brightness(0.5);
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: inherit;
+    z-index: 0;
+}
+
+.kelompok {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: large;
+    font-weight: bold;
+    color: white;
+}
+
+.Mangang {
+    text-align: justify;
+}
+
+h2 {
+    text-align: left;
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}

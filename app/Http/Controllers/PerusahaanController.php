@@ -104,8 +104,10 @@ class PerusahaanController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.edit_perusahaan', [
-            'perusahaan' => Perusahaan::findOrFail($id)->alamat_perusahaan
+        $perusahaan = Perusahaan::where('id_perusahaan', $id)->first();
+        return view('form-edit.form_perusahaan', [
+            'perusahaan' => $perusahaan,
+            'title' => 'Edit Perusahaan',
         ]);
     }
 
@@ -119,17 +121,6 @@ class PerusahaanController extends Controller
     public function update(Request $request, $id)
     {
         $validatedDataPerusahaan = $request->validate([
-            'nama_perusahaan' => 'required',
-            'status_kerja_sama' => 'required',
-            'nomor_telepon' => 'required',
-            'email_perusahaan' => 'required',
-            'moa' => 'nullable|mimes:pdf|max:2048',
-            'mou' => 'nullable|mimes:pdf|max:2048'
-        ]);
-
-        $validatedDataAlamatPerusahaan = $request->validate([
-            'nama_perusahaan' => 'required',
-            'status_kerja_sama' => 'required',
             'nomor_telepon' => 'required',
             'email_perusahaan' => 'required',
             'moa' => 'nullable|mimes:pdf|max:2048',
@@ -150,7 +141,6 @@ class PerusahaanController extends Controller
             $validatedDataPerusahaan['moa'] = $request->file('mou')->store('mou');
         }
         Perusahaan::where('id_perusahaan', $id)->update($validatedDataPerusahaan);
-        AlamatPerusahaan::where('id_perusahaan', $id)->update($validatedDataAlamatPerusahaan);
         return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully updated');
     }
 

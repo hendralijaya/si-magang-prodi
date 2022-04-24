@@ -36,9 +36,9 @@
             <td>{{ $m->peminatan }}</td>
             <td>{{ $m->tahun_angkatan }}</td>
             <td>
-                <a href="/admin/perusahaan/{{ $m->nim }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
-                <a href="/admin/perusahaan/{{ $m->nim }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-            <form action="/admin/perusahaan/{{ $m->nim }}" method="post" class="btn3 btn-md d-md-inline">
+                <a href="/admin/mahasiswa/{{ $m->nim }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
+                <a href="/admin/mahasiswa/{{ $m->nim }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
+            <form action="/admin/mahasiswa/{{ $m->nim }}" method="post" class="btn3 btn-md d-md-inline">
                 @method('delete')
                 @csrf
                 <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>

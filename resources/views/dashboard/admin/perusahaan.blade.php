@@ -1,7 +1,7 @@
 @extends('partials.main')
 
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('css/table.css'); }}">
+<link rel="stylesheet" href="{{ URL::asset('css/table.css') }}">
 @endsection
 
 @section('container')

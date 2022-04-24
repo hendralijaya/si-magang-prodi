@@ -72,7 +72,8 @@ class DosenController extends Controller
     public function show($id)
     {
         return view('dashboard.admin.show_dosen',[
-            'dosen' => Dosen::findOrFail($id)
+            'dosen' => Dosen::where('nik', $id)->first(),
+            'title' => 'Dosen'
         ]);
     }
 
@@ -84,8 +85,9 @@ class DosenController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.edit_dosen', [
-            'dosen' => Dosen::findOrFail($id)
+        return view('form-edit.form_dosen', [
+            'dosen' => Dosen::where('nik', $id)->first(),
+            'title' => 'Edit Dosen'
         ]);
     }
 
@@ -99,7 +101,6 @@ class DosenController extends Controller
     public function update(Request $request, $id)
     {
         $validatedDataDosen = $request->validate([
-            'nik' => 'required',
             'nama_dosen' => 'required',
             'prodi' => 'required',
             'no_hp' => 'required'

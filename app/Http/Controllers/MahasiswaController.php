@@ -94,8 +94,10 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.admin.show_mahasiswa', [
-            'mahasiswa' => Mahasiswa::findOrFail($id)->alamat_mahasiswa
+        $mahasiswa = DB::select("SELECT * FROM mahasiswa, users, alamat_mahasiswa WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = alamat_mahasiswa.nim AND mahasiswa.nim = $id");
+        return view('details.show_mahasiswa', [
+            'mahasiswa' => $mahasiswa,
+            'title' => 'Detail Mahasiswa'
         ]);
     }
 
@@ -107,9 +109,10 @@ class MahasiswaController extends Controller
      */
     public function edit($id)
     {
-        return view('dashboard.admin.edit_mahasiswa', [
-            'mahasiswa' => Mahasiswa::findOrFail($id),
-            'alamat_mahasiswa' => AlamatMahasiswa::findOrFail($id)
+        $mahasiswa = DB::select("SELECT * FROM mahasiswa, users WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = $id");
+        return view('form-edit.form_mahasiswa', [
+            'mahasiswa' => $mahasiswa,
+            'title' => 'Edit Mahasiswa'
         ]);
     }
 
@@ -122,40 +125,12 @@ class MahasiswaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validatedDataMahasiswa = $request->validate([
-            'nim' => 'required|unique:mahasiswa',
-            'nama_mahasiswa' => 'required',
+        $validatedData = $request->validate([
             'no_hp' => 'required',
             'jurusan' => 'required',
-            'khs' => 'required|mimes:pdf|max:2048',
             'peminatan' => 'required',
-            'tahun_angkatan' => 'required',
-            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $validatedDataAlamatMahasiswa = $request->validate([
-            'nim' => 'required',
-            'provinsi' => 'required',
-            'kabupaten_kota' => 'required',
-            'kode_pos' => 'required',
-            'jalan' => 'required'
-        ]);
-
-        if($request->file('khs')){
-            if($request->file('oldkhs')){
-                Storage::delete($request->file('oldkhs'));
-            }
-            $validatedDataMahasiswa['khs'] = $request->file('khs')->store('khs');
-        }
-        
-        if($request->file('asuransi_kesehatan')){
-            if($request->file('oldasuransi_kesehatan')){
-                Storage::delete($request->file('oldasuransi_kesehatan'));
-            }
-            $validatedDataMahasiswa['asuransi_kesehatan'] = $request->file('asuransi_kesehatan')->store('asuransi_kesehatan');
-        }
-        Mahasiswa::where('nim', $id)->update($validatedDataMahasiswa);
-        AlamatMahasiswa::where('nim', $id)->update($validatedDataAlamatMahasiswa);
-
+        Mahasiswa::where('nim', $id)->update($validatedData);
         return redirect()->intended(route('mahasiswa.index'))->with('success','Data mahasiswa has been successfully updated');
     }
 

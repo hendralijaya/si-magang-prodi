@@ -1,6 +1,6 @@
 @extends('partials.main')
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('css/table.css'); }}">
+<link rel="stylesheet" href="{{ URL::asset('css/table.css') }}">
 @endsection
 
 @section('container')
@@ -29,7 +29,6 @@
             <td>{{ $m->email_mentor }}</td>
             <td>{{ $m->nama_perusahaan }}</td>
             <td>
-                <a href="/admin/perusahaan/{{ $m->id_mentor }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
                 <a href="/admin/perusahaan/{{ $m->id_mentor }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
                 <form action="/admin/perusahaan/{{ $m->id_mentor }}" method="post" class="btn3 btn-md d-md-inline">
                 @method('delete')
