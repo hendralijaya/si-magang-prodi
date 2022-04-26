@@ -31,10 +31,6 @@ Route::get('/test', function () {
     return response()->file(Storage::path('public/test.pdf'));
 });
 
-// Regis routes
-Route::get('/register', [RegisterController::class, 'index'])->name('register.index')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
-
 //Login routes
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate')->middleware('guest');
@@ -43,10 +39,13 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middl
 // Route Mahasiswa
 Route::get('/homemahasiswa', [DashboardMahasiswaController::class, 'index'])->name('mahasiswa.dashboard')->middleware('mahasiswa');
 Route::get('/mahasiswa/profile', [DashboardMahasiswaController::class, 'profile'])->name('mahasiswa.profile')->middleware('mahasiswa');
+Route::put('/mahasiswa/profile', [DashboardMahasiswaController::class, 'updateProfile'])->name('mahasiswa.editprofile')->middleware('mahasiswa');
 Route::get('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'formApplyMagang'])->name('mahasiswa.formApplyMagang')->middleware('mahasiswa');
 Route::post('/mahasiswa/form-apply-magang', [DashboardMahasiswaController::class, 'storeApplyMagang'])->name('mahasiswa.storeApplyMagang')->middleware('mahasiswa');
 Route::get('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'formMagang'])->name('mahasiswa.formMagang')->middleware('mahasiswa');
 Route::post('/mahasiswa/form-magang', [DashboardMahasiswaController::class, 'storeMagang'])->name('mahasiswa.storeMagang')->middleware('mahasiswa');
+Route::get('/mahasiswa/list-magang', [DashboardMahasiswaController::class, 'listMagang'])->name('mahasiswa.listMagang')->middleware('mahasiswa');
+Route::get('/mahasiswa/list-apply-magang', [DashboardMahasiswaController::class, 'listApplyMagang'])->name('mahasiswa.listApplyMagang')->middleware('mahasiswa');
 
 // Route Admin
 Route::get('/homeadmin', [DashboardAdminController::class, 'index'])->name('admin.dashboard')->middleware('admin');

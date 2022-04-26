@@ -94,8 +94,8 @@ class MahasiswaController extends Controller
      */
     public function show($id)
     {
-        $mahasiswa = DB::select("SELECT * FROM mahasiswa, users, alamat_mahasiswa WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = alamat_mahasiswa.nim AND mahasiswa.nim = $id");
-        return view('details.show_mahasiswa', [
+        $mahasiswa = DB::select("SELECT * FROM mahasiswa, users, alamat_mahasiswa WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = alamat_mahasiswa.nim AND mahasiswa.nim = ?", [$id]);
+        return view('details.mahasiswa', [
             'mahasiswa' => $mahasiswa,
             'title' => 'Detail Mahasiswa'
         ]);

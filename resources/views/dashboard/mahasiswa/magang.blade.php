@@ -19,7 +19,6 @@
             <th> Tanggal Pengambilan </th>
             <th> Nilai Angka </th>
             <th> Nilai Huruf </th>
-            <th> Action </th>
         </tr>
         @foreach ($magang as $m)
         <tr>
@@ -31,14 +30,6 @@
             <td>{{ $m->tanggal_pengambilan }}</td>
             <td>{{ $m->nilai_magang_angka != NULL ? $m->nilai_magang_angka : '-' }}</td>
             <td>{{ $m->nilai_magang_huruf != NULL ? $m->nilai_magang_huruf : '-' }}</td>
-            <td>
-                <a href="/admin/magang/{{ $m->id_magang }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-            <form action="/admin/magang/{{ $m->id_magang }}" method="post" class="btn3 btn-md d-md-inline">
-                @method('delete')
-                @csrf
-                <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
-            </form>
-            </td>
         </tr>
         @endforeach
         </table>

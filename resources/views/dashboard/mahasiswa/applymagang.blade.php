@@ -17,7 +17,6 @@
             <th> Tanggal Apply </th>
             <th> Status Apply </th>
             <th> Tanggal Respon </th>
-            <th> Action </th>
         </tr>
         @foreach ($applymagang as $am)
         <tr>
@@ -27,13 +26,6 @@
             <td>{{ $am->tanggal_apply }}</td>
             <td>{{ $am->status_apply }}</td>
             <td>{{ $am->tanggal_respon }}</td>
-            <td>
-            <form action="/admin/applymagang/{{ $am->id_apply_magang }}" method="post" class="btn3 btn-md d-md-inline">
-                @method('delete')
-                @csrf
-                <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
-            </form>
-            </td>
         </tr>
         @endforeach
         </table>

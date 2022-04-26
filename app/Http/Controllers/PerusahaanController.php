@@ -7,6 +7,7 @@ use App\Models\Perusahaan;
 use Illuminate\Http\Request;
 use App\Models\AlamatPerusahaan;
 use App\Models\BidangPerusahaan;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PerusahaanController extends Controller
@@ -21,7 +22,8 @@ class PerusahaanController extends Controller
         $perusahaan = Perusahaan::all();
         return view('dashboard.admin.perusahaan', [
             'title' => 'Perusahaan',
-            'perusahaan' => $perusahaan
+            'perusahaan' => $perusahaan,
+            'provinsi' => Provinsi::all(),
         ]);
     }
     /**
@@ -90,9 +92,10 @@ class PerusahaanController extends Controller
      */
     public function show($id)
     {
-        $perusahaan = Perusahaan::where('id_perusahaan', $id)->first();
-        return view('dashboard.admin.show_perusahaan', [
-            'perusahaan' => $perusahaan
+        $perusahaan = DB::select('SELECT nama_perusahaan, status_kerja_sama, nomor_telepon, email_perusahaan, moa, mou, COUNT(DISTINCT id_mentor) AS jumlah_mentor, alamat_perusahaan.*, bidang_perusahaan.*   FROM perusahaan, mentor, alamat_perusahaan, bidang_perusahaan WHERE perusahaan.id_perusahaan = mentor.id_perusahaan AND perusahaan.id_perusahaan = alamat_perusahaan.id_perusahaan AND perusahaan.id_perusahaan = bidang_perusahaan.id_perusahaan AND  bidang_perusahaan.id_perusahaan = ? GROUP BY bidang_perusahaan.bidang_perusahaan', [$id]);
+        return view('details.perusahaan', [
+            'perusahaan' => $perusahaan,
+            'title' => 'Perusahaan Detail'
         ]);
     }
 

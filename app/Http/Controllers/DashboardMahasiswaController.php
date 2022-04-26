@@ -6,9 +6,12 @@ use Carbon\Carbon;
 use App\Models\Dosen;
 use App\Models\Magang;
 use App\Models\Mentor;
+use App\Models\Provinsi;
 use App\Models\Perusahaan;
 use App\Models\ApplyMagang;
 use Illuminate\Http\Request;
+use App\Models\AlamatMahasiswa;
+use Illuminate\Support\Facades\DB;
 
 class DashboardMahasiswaController extends Controller
 {
@@ -22,15 +25,56 @@ class DashboardMahasiswaController extends Controller
 
     public function profile()
     {
-        return view('dashboard.mahasiswa.profile', [
-            'mahasiswa' => auth()->user()->mahasiswa,
-            'title' => 'Profile Mahasiswa',
+        $nim = auth()->user()->mahasiswa->nim;
+        $mahasiswa = DB::select("SELECT * FROM mahasiswa, alamat_mahasiswa, users WHERE mahasiswa.nim = alamat_mahasiswa.nim AND mahasiswa.id_user = users.id AND mahasiswa.nim = ?", [$nim]);
+        if($mahasiswa){
+            return view('dashboard.mahasiswa.form_profile_mahasiswa', [
+                'title' => 'Profile',
+                'mahasiswa' => $mahasiswa,
+                'provinsi' => Provinsi::all()
+            ]);
+        }
+        else{
+            $mahasiswa = DB::select("SELECT * FROM mahasiswa, alamat_mahasiswa, users WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = ?", [$nim]);
+            return view('dashboard.mahasiswa.form_profile_mahasiswa', [
+                'title' => 'Profile',
+                'mahasiswa' => $mahasiswa,
+                'provinsi' => Provinsi::all()
+            ]);
+        }
+    }
+
+    public function updateProfile(Request $request){
+        $validatedData = $request->validate([
+            'provinsi' => 'required',
+            'kabupaten_kota' => 'required',
+            'kode_pos' => 'required',
+            'jalan' => 'required',
+        ]);
+
+        $nim = auth()->user()->mahasiswa->nim;
+        AlamatMahasiswa::where('nim', $nim)->update($validatedData);
+        return redirect()->route('mahasiswa.dashboard')->with('success', 'Alamat mahasiswa has been updated successfully');
+    }
+
+    public function listMagang()
+    {
+        $nim = auth()->user()->mahasiswa->nim;
+        $magang = DB::select("SELECT * FROM magang, mahasiswa, mentor, dosen, perusahaan WHERE magang.nim = mahasiswa.nim AND magang.id_mentor = mentor.id_mentor AND mentor.id_perusahaan = perusahaan.id_perusahaan AND magang.nik = dosen.nik AND mahasiswa.nim = ? ORDER BY nama_perusahaan ASC", [$nim]);
+        return view('dashboard.mahasiswa.magang', [
+            'title' => 'List Form Magang',
+            'magang' => $magang,
         ]);
     }
 
-    public function listFormMagang()
+    public function listApplyMagang()
     {
-        return view();
+        $nim = auth()->user()->mahasiswa->nim;
+        $applymagang = DB::select("SELECT * FROM mahasiswa_apply_magang_perusahaan, mahasiswa, perusahaan WHERE mahasiswa_apply_magang_perusahaan.id_perusahaan = perusahaan.id_perusahaan AND mahasiswa_apply_magang_perusahaan.nim = mahasiswa.nim AND mahasiswa.nim = ? ORDER BY nama_perusahaan ASC", [$nim]);
+        return view('dashboard.mahasiswa.applymagang', [
+            'title' => 'List Apply Magang',
+            'applymagang' => $applymagang,
+        ]);
     }
 
     public function  formApplyMagang()

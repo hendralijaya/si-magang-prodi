@@ -16,7 +16,7 @@ class Dosen
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->id_role != '3'){
+        if(auth()->guest() || auth()->user()->id_role != 3){
             // Role 3 = Dosen
             return back();
         }

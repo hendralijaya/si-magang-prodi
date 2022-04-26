@@ -77,7 +77,18 @@ class MagangController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'nilai_magang_angka' => 'required',
+            'nilai_magang_huruf' => 'required',
+        ]);
+
+        DB::update("UPDATE magang SET nilai_magang_angka = ?, nilai_magang_huruf = ? WHERE id_magang = ?", [
+            $validatedData['nilai_magang_angka'],
+            $validatedData['nilai_magang_huruf'],
+            $id
+        ]);
+
+        return redirect(route('magang.index'))->with('success', 'Magang has been updated successfully');
     }
 
     /**

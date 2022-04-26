@@ -9,7 +9,7 @@
           <li class="nav-item">
             <a class="nav-link {{ Request::is(checkRole(Auth::user()->id_role)) ? 'active' : '' }}" aria-current="page" href="/{{ checkRole(Auth::user()->id_role) }}">Home</a>
           </li>
-          @if (Auth::user()->id_role ==  '1' || Auth::user()->id_role == '3')
+          @if (Auth::user()->id_role ==  '1')
             <li class="nav-item">
               <a class="nav-link {{ Request::is('admin/perusahaan*') ? 'active' : '' }}" href="{{ route('perusahaan.index') }}">Perusahaan</a>
             </li>
@@ -28,14 +28,31 @@
             <li class="nav-item">
               <a class="nav-link {{ Request::is('admin/magang*') ? 'active' : '' }}" href="{{ route('magang.index') }}">Magang</a>
             </li>
-
           @elseif (Auth::user()->id_role == '3')
             <li class="nav-item">
-              <a class="nav-link {{ Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'active' : '' }}" href="{{ route(Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'mahasiswa' : 'dosen' . '.profile') }}">Profile</a>
+              <a class="nav-link {{ Request::is('admin/profile') ? 'active' : '' }}" href="{{ route('dosen.profile') }}">Profile</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/perusahaan*') ? 'active' : '' }}" href="{{ route('perusahaan.index') }}">Perusahaan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/dosen*') ? 'active' : '' }}" href="{{ route('dosen.index') }}">Dosen</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/mahasiswa*') ? 'active' : '' }}" href="{{ route('mahasiswa.index') }}">Mahasiswa</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/mentor*') ? 'active' : '' }}" href="{{ route('mentor.index') }}">Mentor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/applymagang*') ? 'active' : '' }}" href="{{ route('applymagang.index') }}">Apply Magang</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {{ Request::is('admin/magang*') ? 'active' : '' }}" href="{{ route('magang.index') }}">Magang</a>
             </li>
           @elseif (Auth::user()->id_role == '2')
             <li class="nav-item">
-              <a class="nav-link {{ Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'active' : '' }}" href="{{ route(Request::is('mahasiswa/profile') || Request::is('admin/profile') ? 'mahasiswa' : 'dosen' . '.profile') }}">Profile</a>
+              <a class="nav-link {{ Request::is('mahasiswa/profile') ? 'active' : '' }}" href="{{ route('mahasiswa.profile') }}">Profile</a>
             </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -46,22 +63,13 @@
               <li><a class="dropdown-item" href="{{ route('mahasiswa.formMagang') }}">Magang</a></li>
             </ul>
           </li>
-          @endif
-          
-          {{-- <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('mahasiswa/list-magang') ? 'active' : '' }}" href="{{ route('mahasiswa.listMagang') }}">Magang</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li> --}}
+            <a class="nav-link {{ Request::is('mahasiswa/list-apply-magang') ? 'active' : '' }}" href="{{ route('mahasiswa.listApplyMagang') }}">Apply Magang</a>
+          </li>
+          @endif
         </ul>
         <form class="d-flex" action='{{ route('logout') }}'>
           @csrf

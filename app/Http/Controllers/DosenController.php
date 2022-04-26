@@ -71,9 +71,10 @@ class DosenController extends Controller
      */
     public function show($id)
     {
-        return view('dashboard.admin.show_dosen',[
-            'dosen' => Dosen::where('nik', $id)->first(),
-            'title' => 'Dosen'
+        $dosen = DB::select("SELECT * FROM dosen, users WHERE dosen.id_user = users.id AND nik = ?",[$id]);
+        return view('details.dosen',[
+            'dosen' => $dosen,
+            'title' => 'Dosen Detail',
         ]);
     }
 

@@ -9,6 +9,7 @@ class AlamatMahasiswa extends Model
 {
     use HasFactory;
     protected $table = 'alamat_mahasiswa';
+    public $timestamps = false;
     protected $fillable = [
         'nim',
         'provinsi',

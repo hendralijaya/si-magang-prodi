@@ -1,13 +1,14 @@
 @extends('partials.main')
 @section('container')
     <h3>Form Magang</h3>
-    <form action="{{ route('mahasiswa.storeMagang') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('magang.update',$magang[0]->id_magang) }}" method="POST" enctype="multipart/form-data">
+        @method('PUT')
         @csrf
         <div class="mb-3 row">
             <label for="" class="col-sm-2 col-form-label">
                 Nama Mahasiswa
             </label>
-            <input type="text" name="nama_mahasiswa" value='{{ $magang[0]->nama_mahasiswa }}'>
+            <input type="text" name="nama_mahasiswa" value='{{ $magang[0]->nama_mahasiswa }}' disabled>
             @error('nama_mahasiswa')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -18,7 +19,7 @@
             <label for="" class="col-sm-2 col-form-label">
                 Jurusan
             </label>
-            <input type="text" name="jurusan" value='{{ $magang[0]->jurusan }}'>
+            <input type="text" name="jurusan" value='{{ $magang[0]->jurusan }}' disabled>
             @error('jurusan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -29,7 +30,7 @@
             <label for="" class="col-sm-2 col-form-label">
                 Peminatan
             </label>
-            <input type="text" name="jurusan" value='{{ $magang[0]->peminatan }}'>
+            <input type="text" name="jurusan" value='{{ $magang[0]->peminatan }}' disabled>
             @error('peminatan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>

@@ -31,7 +31,7 @@ class LoginController extends Controller
                 return redirect()->intended(route('mahasiswa.dashboard'))->with('success','Login success!');
             }else if(auth()->user()->id_role == '3'){
                 $request->session()->regenerate();
-                return redirect()->intended(route('admin.index'))->with('success','Login success!');
+                return redirect()->intended(route('admin.dashboard'))->with('success','Login success!');
             }
         }
         return back()->with('loginError','Login failed!');

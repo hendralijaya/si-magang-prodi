@@ -16,9 +16,8 @@ class Mahasiswa
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->id_role != '2'){
+        if(auth()->guest() || auth()->user()->id_role != 2){
             // Role 2 = Mahasiswa
-            dd('Anda tidak memiliki akses ke halaman ini');
             return back();
         }
         return $next($request);

@@ -16,7 +16,7 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->guest() || auth()->user()->id_role != '1'){
+        if(auth()->guest() || auth()->user()->id_role != 1 && auth()->user()->id_role != 3){
             return back();
         }
         return $next($request);
