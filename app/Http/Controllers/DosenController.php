@@ -43,20 +43,26 @@ class DosenController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedDataDosen = $request->validate([
+        $validatedData = $request->validate([
             'nik' => 'required',
             'nama_dosen' => 'required',
             'prodi' => 'required',
-            'no_hp' => 'required'
-        ]);
-
-        $validatedDataUser = $request->validate([
+            'no_hp' => 'required',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8',
         ]);
-        $validatedDataUser['id_role'] = 3;
-        $validatedDataUser['password'] = bcrypt($validatedDataUser['password']);
+        $validatedDataDosen = [
+            'nik' => $validatedData['nik'],
+            'nama_dosen' => $validatedData['nama_dosen'],
+            'prodi' => $validatedData['prodi'],
+            'no_hp' => $validatedData['no_hp'],
+        ];
 
+        $validatedDataUser = [
+            'email' => $validatedData['email'],
+            'password' => bcrypt($validatedData['password']),
+            'id_role' => 3
+        ];
         $idUser = User::create($validatedDataUser)->id;
         $validatedDataDosen['id_user'] = $idUser;
         Dosen::create($validatedDataDosen);
@@ -118,7 +124,7 @@ class DosenController extends Controller
      */
     public function destroy($id)
     {
-        Dosen::destroy($id);
+        Dosen::where('nik', $id)->delete();
         return redirect()->intended(route('dosen.index'))->with('success','Dosen has been successfully deleted');
     }
 }

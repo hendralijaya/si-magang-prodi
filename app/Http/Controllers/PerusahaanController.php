@@ -47,40 +47,50 @@ class PerusahaanController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedDataPerusahaan = $request->validate([
+        $validatedData = $request->validate([
             'nama_perusahaan' => 'required',
             'nomor_telepon' => 'required',
             'email_perusahaan' => 'required',
             'moa' => 'nullable|mimes:pdf|max:2048',
-            'mou' => 'nullable|mimes:pdf|max:2048'
-        ]);
-        $validatedDataAlamatPerusahaan = $request->validate([
+            'mou' => 'nullable|mimes:pdf|max:2048',
             'provinsi' => 'required',
             'kabupaten_kota' => 'required',
             'kode_pos' => 'required',
-            'jalan' => 'required'
-        ]);
-        $validatedDataBidangPerusahaan = $request->validate([
+            'jalan' => 'required',
             'bidang_perusahaan' => 'required'
         ]);
+        $validatedDataPerusahaan = [
+            'nama_perusahaan' => $validatedData['nama_perusahaan'],
+            'nomor_telepon' => $validatedData['nomor_telepon'],
+            'email_perusahaan' => $validatedData['email_perusahaan'],
+            'moa' => $validatedData['moa'],
+            'mou' => $validatedData['mou'],
+        ];
+        $validatedDataAlamatPerusahaan = [
+            'provinsi' => $validatedData['provinsi'],
+            'kabupaten_kota' => $validatedData['kabupaten_kota'],
+            'kode_pos' => $validatedData['kode_pos'],
+            'jalan' => $validatedData['jalan'],
+        ];
+        $validatedDataBidangPerusahaan = [
+            'bidang_perusahaan' => $validatedData['bidang_perusahaan'],
+        ];
         if($request->file('moa')){
             $validatedDataPerusahaan['moa'] = $request->file('moa')->store('moa');
         }
         if($request->file('mou')){
             $validatedDataPerusahaan['mou'] = $request->file('mou')->store('mou');
         }
-        
         $idPerusahaan = Perusahaan::create($validatedDataPerusahaan)->id;
-        
         $validatedDataAlamatPerusahaan['id_perusahaan'] = $idPerusahaan;
-        
         AlamatPerusahaan::create($validatedDataAlamatPerusahaan);
-        foreach($validatedDataBidangPerusahaan['bidang_perusahaan'] as $bidang){
-            BidangPerusahaan::create([
+        for($i = 0; $i < count($validatedDataBidangPerusahaan['bidang_perusahaan']); $i++){
+            $batchBidangPerusahaan[$i] = [
                 'id_perusahaan' => $idPerusahaan,
-                'bidang_perusahaan' => $bidang
-            ]);
+                'bidang_perusahaan' => $validatedDataBidangPerusahaan['bidang_perusahaan'][$i]
+            ];
         }
+        BidangPerusahaan::insert($batchBidangPerusahaan);
         return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully stored');
     }
 

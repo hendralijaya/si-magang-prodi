@@ -27,11 +27,17 @@
                     <div class="form-row">
                         <div class="col-lg-7">
                           <input type="email" placeholder="Email Address" class="form-control my-3 p-2" name="email">
+                          @error("email")
+                          <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                         </div>
                       </div>
                     <div class="form-row">
                         <div class="col-lg-7">
                           <input type="password" placeholder="Password" class="form-control my-3 p-2" name="password">
+                          @error("password")
+                          <div class="alert alert-danger">{{ $message }}</div>
+                          @enderror
                         </div>
                       </div>
                     <div class="form-row">

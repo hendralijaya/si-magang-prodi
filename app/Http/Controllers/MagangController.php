@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Magang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -99,6 +100,7 @@ class MagangController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Magang::where('id_magang', $id)->delete();
+        return redirect()->intended(route('magang.index'))->with('success', 'Magang has been successfully deleted');
     }
 }

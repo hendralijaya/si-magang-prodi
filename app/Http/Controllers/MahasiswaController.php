@@ -142,14 +142,14 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        $mahasiswa = Mahasiswa::findOrFail($id);
+        $mahasiswa = Mahasiswa::where('nim',$id);
         if($mahasiswa->khs){
             Storage::delete($mahasiswa->khs);
         }
         if($mahasiswa->asuransi_kesehatan){
             Storage::delete($mahasiswa->asuransi_kesehatan);
         }
-        Mahasiswa::destroy($id);
+        $mahasiswa->delete();
         return redirect()->intended(route('mahasiswa.index'))->with('success','Data mahasiswa has been successfully deleted');
     }
 }
