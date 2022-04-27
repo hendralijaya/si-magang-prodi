@@ -17,7 +17,7 @@ class PerusahaanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         $perusahaan = Perusahaan::all();
         return view('dashboard.admin.perusahaan', [
@@ -92,7 +92,10 @@ class PerusahaanController extends Controller
      */
     public function show($id)
     {
-        $perusahaan = DB::select('SELECT nama_perusahaan, status_kerja_sama, nomor_telepon, email_perusahaan, moa, mou, COUNT(DISTINCT id_mentor) AS jumlah_mentor, alamat_perusahaan.*, bidang_perusahaan.*   FROM perusahaan, mentor, alamat_perusahaan, bidang_perusahaan WHERE perusahaan.id_perusahaan = mentor.id_perusahaan AND perusahaan.id_perusahaan = alamat_perusahaan.id_perusahaan AND perusahaan.id_perusahaan = bidang_perusahaan.id_perusahaan AND  bidang_perusahaan.id_perusahaan = ? GROUP BY bidang_perusahaan.bidang_perusahaan', [$id]);
+        $perusahaan = DB::select('SELECT nama_perusahaan, status_kerja_sama, nomor_telepon, email_perusahaan, moa, mou, COUNT(DISTINCT id_mentor) AS jumlah_mentor, alamat_perusahaan.*, bidang_perusahaan.*   
+        FROM perusahaan, mentor, alamat_perusahaan, bidang_perusahaan WHERE perusahaan.id_perusahaan = mentor.id_perusahaan 
+        AND perusahaan.id_perusahaan = alamat_perusahaan.id_perusahaan AND perusahaan.id_perusahaan = bidang_perusahaan.id_perusahaan 
+        AND  bidang_perusahaan.id_perusahaan = ? GROUP BY bidang_perusahaan.bidang_perusahaan', [$id]);
         return view('details.perusahaan', [
             'perusahaan' => $perusahaan,
             'title' => 'Perusahaan Detail'

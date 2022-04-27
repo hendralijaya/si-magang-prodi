@@ -1,6 +1,6 @@
 @extends('partials.main')
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('css/table.css'); }}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 @endsection
 
 @section('container')
@@ -13,12 +13,8 @@
   </div>
 @endif
 
-<div class="container">
-
-</div>
-
-    <table>
-        <tr>
+    <table id="example" class="display" style="width:100%">
+        <thead>
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Nomor HP </th>
@@ -26,7 +22,7 @@
             <th> Peminatan </th>
             <th> Tahun Angkatan </th>
             <th> Action </th>
-        </tr>
+        </thead>
         @forelse ($mahasiswa as $m)
         <tr>
             <td>{{ $loop->iteration }}</td>
@@ -49,7 +45,13 @@
             <h3>Mahasiswa is null</h3>
         @endforelse
         </table>
-
+        <script>
+            $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

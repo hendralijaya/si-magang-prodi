@@ -1,7 +1,7 @@
 @extends('partials.main')
 
 @section('css')
-<link rel="stylesheet" href="{{ URL::asset('css/table.css') }}">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 @endsection
 
 @section('container')
@@ -9,81 +9,20 @@
 <div class="col-md-3 d-md-inline">
     <a class="btn btn-primary" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
 </div>
-<br>
-<div class='container d-md-inline'>
-    <div class="row">
-        <div class="col-md-5">
-            <h3 class="btn btn-primary">Filter : </h3>
-            <form action="{{ route('perusahaan.index') }}" method="get">
-                @csrf
-                <div class="input-group">
-                    <label for="" class="col-sm-5 col-form-label">
-                        Nama Perusahaan
-                    </label>
-                    <input type="text" class="col-sm-7" name="nama_perusahaan_cari">
-                </div>
-                <div class="input-group">
-                    <label for="" class="col-sm-5 col-form-label">Status Kerja Sama</label>
-                    <select name="status_kerja_sama" id="status_kerja_sama" class="form-control col-sm-5 col-form-label">
-                        <option value="">Semua</option>
-                        <option value="N/A"></option>
-                        <option value="MOU">MOU</option>
-                        <option value="MOA">MOA</option>
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="" class="col-sm-5 col-form-label">ORDER BY</label>
-                      <div class="col-sm-10 form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="nama_perusahaan" value="ORDER BY nama_perusahaan ASC" id="inlineRadio1">
-                        <label class="form-check-label" for="inlineRadio1">Nama Perusahaan ASC</label>
-                      </div>
-                      <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="nama_perusahaan" value='ORDER BY nama_perusahaan DESC' id="inlineRadio2">
-                        <label class="form-check-label" for="inlineRadio2">Nama Perusahaan DESC</label>
-                      </div>
-                      <div class="col-sm-10 form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="email_perusahaan" value="ORDER BY email_perusahaan ASC" id="inlineRadio1">
-                        <label class="form-check-label" for="inlineRadio1">Email Perusahaan ASC</label>
-                      </div>
-                      <div class="form-check-inline">
-                        <input class="form-check-input" type="radio" name="email_perusahaan" value='ORDER BY email_perusahaan DESC' id="inlineRadio2">
-                        <label class="form-check-label" for="inlineRadio2">Email Perusahaan DESC</label>
-                      </div>
-                </div>
-                <div class="input-group">
-                    <label for="" class="col-sm-5 col-form-label">Provinsi</label>
-                    <select name="order_by" id="order_by" class="form-control col-sm-5 col-form-label">
-                        <option value="">Semua</option>
-                        @foreach ($provinsi as $p)
-                            <option value="{{ $p->nama_provinsi }}">{{ $p->nama_provinsi }}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <div class="input-group">
-                    <label for="" class="col-sm-5 col-form-label">
-                        Jalan
-                    </label>
-                    <input type="text" class="col-sm-7" name="jalan">
-                </div>
-                <button type="submit" value="Submit">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
 @if (session()->has('success'))
   <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}
   </div>
 @endif
-    <table>
-        <tr>
+    <table id="example" class="display" style="width:100%">
+        <thead>
             <th>No. </th>
             <th> Nama Perusahaan </th>
-            <th> Status Kerja Sama </ht>
+            <th> Status Kerja Sama </th>
             <th> Nomor Telepon </th>
             <th> Email Perusahaan </th>
             <th> Action </th>
-        </tr>
+        </thead>
         @forelse ($perusahaan as $company)
         <tr>
             <td>{{ $loop->iteration }}</td>
@@ -105,6 +44,13 @@
             <h3>Prrusahaan is null</h3>
         @endforelse
         </table>
+        <script>
+            $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+        </script>
+        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
