@@ -83,19 +83,6 @@
         </div>
     </div>
 
-    <div class="mb-3 row">
-        <label for=""  class="col-sm-2 col-form-label">
-            KHS
-        </label>
-        <div class= "col-sm-10">
-            <input type="file" class="col-sm-10" name="khs">
-            @error('khs')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
-            </div>
-        @enderror
-        </div>
-    </div>
 
     <div class="mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
@@ -118,20 +105,6 @@
         <div class= "col-sm-10">
             <input type="number" class="col-sm-10" name="tahun_angkatan">
             @error('tahun_angkatan')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
-            </div>
-        @enderror
-        </div>
-    </div>
-
-    <div class="mb-3 row">
-        <label for="" class="col-sm-2 col-form-label">
-            Asuransi Kesehatan
-        </label>
-        <div class= "col-sm-10">
-            <input type="file" class="col-sm-10" name="asuransi_kesehatan">
-            @error('asuransi_kesehatan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>

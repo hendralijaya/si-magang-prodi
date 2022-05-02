@@ -27,21 +27,24 @@
         <label class="col-form-label col-sm-10">{{ $perusahaan[0]->email_perusahaan }}</label>
         </div>
     </div>
-
-    <div class="mb-3 row">
-        <label for="" class="col-sm-2 col-form-label">MOA</label>
-        <div class="col-sm-10">
-        <a class="col-form-label col-sm-10" href="{{  asset($perusahaan[0]->moa != NULL ? asset($perusahaan[0]->moa) : '#') }}">Open the MOA</a>
-        </div>
+@if ($perusahaan[0]->moa != NULL)
+<div class="mb-3 row">
+    <label for="" class="col-sm-2 col-form-label">MOA</label>
+    <div class="col-sm-10">
+    <a class="col-form-label col-sm-10" href="{{  route('download.moa',substr($perusahaan[0]->moa,23)) }}">Download MOA</a>
     </div>
-
-    <div class="mb-3 row">
-        <label for="" class="col-sm-2 col-form-label">MOU</label>
-        <div class="col-sm-10">
-            <a class="col-form-label col-sm-10" href="{{  asset($perusahaan[0]->mou != NULL ? asset($perusahaan[0]->mou) : '#') }}">Open the MOU</a>
-        </div>
+</div>
+@endif
+    
+@if ($perusahaan[0]->mou != NULL)
+<div class="mb-3 row">
+    <label for="" class="col-sm-2 col-form-label">MOU</label>
+    <div class="col-sm-10">
+        <a class="col-form-label col-sm-10" href="{{  route('download.mou',substr($perusahaan[0]->mou,23)) }}">Download MOU</a>
     </div>
-
+</div>
+@endif
+    
     <div class="mb-3 row">
         <label for="" class="col-sm-2 col-form-label">Alamat</label>
         <div class="col-sm-10">

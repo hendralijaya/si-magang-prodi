@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Dosen;
 use App\Models\Magang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -65,7 +66,8 @@ class MagangController extends Controller
         $magang = DB::select("SELECT * FROM magang, mahasiswa WHERE magang.nim = mahasiswa.nim AND magang.id_magang = ?", [$id]);
         return view('form-edit.form_magang', [
             'title' => 'Edit Magang',
-            'magang' => $magang
+            'magang' => $magang,
+            'dosen' => Dosen::all(),
         ]);
     }
 
@@ -79,15 +81,25 @@ class MagangController extends Controller
     public function update(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'nilai_magang_angka' => 'required',
-            'nilai_magang_huruf' => 'required',
+            'nilai_magang_angka' => 'nullable',
+            'nik' => 'nullable',
         ]);
 
-        DB::update("UPDATE magang SET nilai_magang_angka = ?, nilai_magang_huruf = ? WHERE id_magang = ?", [
-            $validatedData['nilai_magang_angka'],
-            $validatedData['nilai_magang_huruf'],
-            $id
-        ]);
+        if($validatedData['nilai_magang_angka'] != null){
+            if($validatedData['nilai_magang_angka'] >= 90){
+                $validatedData['nilai_magang_huruf'] = 'A';
+            }elseif($validatedData['nilai_magang_angka'] >= 80){
+                $validatedData['nilai_magang_huruf'] = 'B';
+            } else if($validatedData['nilai_magang_angka'] >= 70){
+                $validatedData['nilai_magang_huruf'] = 'C';
+            } else if($validatedData['nilai_magang_angka'] >= 60){
+                $validatedData['nilai_magang_huruf'] = 'D';
+            } else {
+                $validatedData['nilai_magang_huruf'] = 'E';
+            }
+        }
+
+        Magang::where('id_magang', $id)->update($validatedData);
 
         return redirect(route('magang.index'))->with('success', 'Magang has been updated successfully');
     }

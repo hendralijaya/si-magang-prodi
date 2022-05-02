@@ -50,10 +50,8 @@ class MahasiswaController extends Controller
             'nama_mahasiswa' => 'required',
             'no_hp' => 'required',
             'jurusan' => 'required',
-            'khs' => 'required|mimes:pdf|max:2048',
             'peminatan' => 'required',
             'tahun_angkatan' => 'required',
-            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'email' => 'required|email:dns|unique:users',
             'password' => 'required|min:8'
         ]);
@@ -62,23 +60,15 @@ class MahasiswaController extends Controller
             'nama_mahasiswa' => $validatedData['nama_mahasiswa'],
             'no_hp' => $validatedData['no_hp'],
             'jurusan' => $validatedData['jurusan'],
-            'khs' => $validatedData['khs'],
             'peminatan' => $validatedData['peminatan'],
             'tahun_angkatan' => $validatedData['tahun_angkatan'],
-            'asuransi_kesehatan' => $validatedData['asuransi_kesehatan']
+            'asuransi_kesehatan' => $request->file('asuransi_kesehatan')->store('asuransi_kesehatan'),
         ];
         $validatedDataUser = [
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
             'id_role' => 2
         ];
-        
-        if($request->file('khs')){
-            $validatedDataMahasiswa['khs'] = $request->file('khs')->store('khs');
-        }
-        if($request->file('asuransi_kesehatan')){
-            $validatedDataMahasiswa['asuransi_kesehatan'] = $request->file('asuransi_kesehatan')->store('asuransi_kesehatan');
-        }
         $idUser = User::create($validatedDataUser)->id;
         $validatedDataMahasiswa['id_user'] = $idUser;
         Mahasiswa::create($validatedDataMahasiswa);
@@ -142,7 +132,7 @@ class MahasiswaController extends Controller
      */
     public function destroy($id)
     {
-        $mahasiswa = Mahasiswa::where('nim',$id);
+        $mahasiswa = Mahasiswa::where('nim',$id)->get()->first();
         if($mahasiswa->khs){
             Storage::delete($mahasiswa->khs);
         }

@@ -234,16 +234,31 @@
 </div>
 
 {{-- DROPDOWN MULTISELECT --}}
-{{-- <div class= "mb-3 row">
+<div class= "mb-3 row">
 
     
 
-    <label for="" class="col-sm-2 col-form-label">
+    {{-- <label for="" class="col-sm-2 col-form-label">
         Bidang Perusahaan
     </label>
     <div class="col-sm-10">
-    <input type="text" class="col-sm-10" name="bidang_perusahaan[]">
-</div> --}}
+    <input type="text" class="col-sm-10" name="bidang_perusahaan[]"> --}}
+    {{-- <div class= "mb-3 row">
+
+        <label for="" class="col-sm-2 col-form-label">
+            Bidang Perusahaan
+        </label>
+        <div class="col-sm-10">
+        <input type="text" class="col-sm-10" name="bidang_perusahaan[]">
+    </div>
+    <div id="buildyourform">
+    </div>
+    <input type="button" value="Tambahkan bidang perusahaan" class="add" id="add" />
+    <button type="submit" value="Submit">Submit</button>
+    </div> --}}
+
+
+</div>
 <button type="submit" value="Submit">Submit</button>
 </form>
     <!-- Optional JavaScript; choose one of the two! -->
@@ -256,7 +271,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
     -->
     {{-- <div></div> --}}
-{{-- <script>
+<script>
         $(document).ready(function() {
             $("#add").click(function() {
                 var lastField = $("#buildyourform div:last");
@@ -275,5 +290,5 @@
                 $("#buildyourform").append(fieldWrapper);
             });
         });
-</script> --}}
+</script>
 @endsection

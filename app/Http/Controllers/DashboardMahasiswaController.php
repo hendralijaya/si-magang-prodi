@@ -7,6 +7,7 @@ use App\Models\Dosen;
 use App\Models\Magang;
 use App\Models\Mentor;
 use App\Models\Provinsi;
+use App\Models\Mahasiswa;
 use App\Models\Perusahaan;
 use App\Models\ApplyMagang;
 use Illuminate\Http\Request;
@@ -50,10 +51,25 @@ class DashboardMahasiswaController extends Controller
             'kabupaten_kota' => 'required',
             'kode_pos' => 'required',
             'jalan' => 'required',
+            'khs' => 'required|mimes:pdf|max:2048',
+            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
-        $nim = auth()->user()->mahasiswa->nim;
-        AlamatMahasiswa::where('nim', $nim)->update($validatedData);
+        $alamatMahasiswa = [
+            'nim' => auth()->user()->mahasiswa->nim,
+            'provinsi' => $validatedData['provinsi'],
+            'kabupaten_kota' => $validatedData['kabupaten_kota'],
+            'kode_pos' => $validatedData['kode_pos'],
+            'jalan' => $validatedData['jalan'],
+        ];
+
+        $mahasiswa = [
+            'khs' => $request->file('khs')->store('khs'),
+            'asuransi_kesehatan' => $request->file('asuransi_kesehatan')->store('asuransi_kesehatan'),
+        ];
+        $mahasiswa = auth()->user()->mahasiswa;
+        $mahasiswa->update($mahasiswa);
+        AlamatMahasiswa::where('nim', $mahasiswa->nim)->update($alamatMahasiswa);
         return redirect()->route('mahasiswa.dashboard')->with('success', 'Alamat mahasiswa has been updated successfully');
     }
 
@@ -135,20 +151,15 @@ class DashboardMahasiswaController extends Controller
             ];
             $validatedDataApplyMagang = [
                 'nim' => auth()->user()->mahasiswa->nim,
-                'foto_mahasiswa' => $validatedData['foto_mahasiswa'],
-                'formulir_pendaftaran_kerja_praktik' => $validatedData['formulir_pendaftaran_kerja_praktik'],
-                'surat_pengantar_kerja_praktik' => $validatedData['surat_pengantar_kerja_praktik'],
-                'cv' => $validatedData['cv'],
-                'cover_letter' => $validatedData['cover_letter'],
                 'tanggal_apply' => $validatedData['tanggal_apply'],
                 'status_apply' => $validatedData['status_apply'],
                 'tanggal_respon' => $validatedData['tanggal_respon']
             ];
-                $validatedDataApplyMagang['foto_mahasiswa'] = $request->file('foto_mahasiswa')->store(public_path('/storage/dokumen_apply_magang/foto_mahasiswa'));
-                $validatedDataApplyMagang['formulir_pendaftaran_kerja_praktik'] = $request->file('formulir_pendaftaran_kerja_praktik')->store(public_path('/storage/dokumen_apply_magang/formulir_pendaftaran_kerja_praktik'));
-                $validatedDataApplyMagang['surat_pengantar_kerja_praktik'] = $request->file('surat_pengantar_kerja_praktik')->store(public_path('/storage/dokumen_apply_magang/surat_pengantar_kerja_praktik'));
-                $validatedDataApplyMagang['cv'] = $request->file('cv')->store(public_path('/storage/dokumen_apply_magang/cv'));
-                $validatedDataApplyMagang['cover_letter'] = $request->file('cover_letter')->store(public_path('/storage/dokumen_apply_magang/cover_letter'));
+                $validatedDataApplyMagang['foto_mahasiswa'] = $request->file('foto_mahasiswa')->store('dokumen_apply_magang/foto_mahasiswa');
+                $validatedDataApplyMagang['formulir_pendaftaran_kerja_praktik'] = $request->file('formulir_pendaftaran_kerja_praktik')->store('dokumen_apply_magang/formulir_pendaftaran_kerja_praktik');
+                $validatedDataApplyMagang['surat_pengantar_kerja_praktik'] = $request->file('surat_pengantar_kerja_praktik')->store('dokumen_apply_magang/surat_pengantar_kerja_praktik');
+                $validatedDataApplyMagang['cv'] = $request->file('cv')->store('dokumen_apply_magang/cv');
+                $validatedDataApplyMagang['cover_letter'] = $request->file('cover_letter')->store('dokumen_apply_magang/cover_letter');
             $perusahaan = Perusahaan::create($validatedDataPerusahaan)->id;
             $validatedDataApplyMagang['id_perusahaan'] = $perusahaan;
             ApplyMagang::create($validatedDataApplyMagang);
@@ -160,10 +171,12 @@ class DashboardMahasiswaController extends Controller
     {
         $perusahaan = Perusahaan::all();
         $dosen = Dosen::all();
+        $mentor = Mentor::all();
         return view('form.form_magang',[
             'perusahaan' => $perusahaan,
             'title' => 'Form Magang',
-            'dosen' => $dosen
+            'dosen' => $dosen,
+            'mentor' => $mentor
         ]);
     }
 
@@ -194,10 +207,6 @@ class DashboardMahasiswaController extends Controller
             'tanggal_pengambilan' => $validatedData['tanggal_pengambilan'],
             'tahun_ajaran' => $validatedData['tahun_ajaran'],
             'semester' => $validatedData['semester'],
-            'laporan_kerja_praktik' => $validatedData['laporan_kerja_praktik'],
-            'formulir_bimbingan_kerja_praktik' => $validatedData['formulir_bimbingan_kerja_praktik'],
-            'buku_aktivitas_harian_kerja_praktik' => $validatedData['buku_aktivitas_harian_kerja_praktik'],
-            'surat_keterangan_bebas_akademik' => $validatedData['surat_keterangan_bebas_akademik'],
             'id_perusahaan' => $validatedData['id_perusahaan'],
             'nik' => $validatedData['nik']
         ]);

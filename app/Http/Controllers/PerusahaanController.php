@@ -76,10 +76,10 @@ class PerusahaanController extends Controller
             'bidang_perusahaan' => $validatedData['bidang_perusahaan'],
         ];
         if($request->file('moa')){
-            $validatedDataPerusahaan['moa'] = $request->file('moa')->store('moa');
+            $validatedDataPerusahaan['moa'] = $request->file('moa')->store('dokumen_perusahaan/moa');
         }
         if($request->file('mou')){
-            $validatedDataPerusahaan['mou'] = $request->file('mou')->store('mou');
+            $validatedDataPerusahaan['mou'] = $request->file('mou')->store('dokumen_perusahaan/mou');
         }
         $idPerusahaan = Perusahaan::create($validatedDataPerusahaan)->id;
         $validatedDataAlamatPerusahaan['id_perusahaan'] = $idPerusahaan;

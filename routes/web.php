@@ -13,8 +13,7 @@ use App\Http\Controllers\ApplyMagangController;
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardDosenController;
 use App\Http\Controllers\DashboardMahasiswaController;
-
-
+use App\Http\Controllers\DownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,4 +59,17 @@ Route::resource('/admin/magang', MagangController::class)->middleware('admin');
 Route::get('/admin/profile', [DashboardDosenController::class, 'profile'])->name('dosen.profile')->middleware('dosen');
 
 
-//test
+//download file
+Route::get('/download/khs/{image}',[DownloadController::class, 'downloadKhs'])->name('download.khs')->middleware('admin');
+Route::get('/download/asuransikesehatan/{image}',[DownloadController::class, 'downloadAsuransiKesehatan'])->name('download.asuransikesehatan')->middleware('admin');
+Route::get('/download/coverletter/{image}',[DownloadController::class, 'downloadCoverLetter'])->name('download.coverletter')->middleware('admin');
+Route::get('/download/cv/{image}',[DownloadController::class, 'downloadCV'])->name('download.cv')->middleware('admin');
+Route::get('/download/formulirpendaftarankerjapraktik/{image}',[DownloadController::class, 'downloadFormulirPendaftaranKerjaPraktik'])->name('download.formulirpendaftarankerjapraktik')->middleware('admin');
+Route::get('/download/fotomahasiswa/{image}',[DownloadController::class, 'downloadFotoMahasiswa'])->name('download.fotomahasiswa')->middleware('admin');
+Route::get('/download/suratpengantarkerjapraktik/{image}',[DownloadController::class, 'downloadSuratPengantarKerjaPraktik'])->name('download.suratpengantarkerjapraktik')->middleware('admin');
+Route::get('/download/bukuaktivitashariankerjapraktik/{image}',[DownloadController::class, 'downloadBukuAktivitasHarianKerjaPraktik'])->name('download.bukuaktivitashariankerjapraktik')->middleware('admin');
+Route::get('/download/formulirbimbingankerjapraktik/{image}',[DownloadController::class, 'downloadFormulirBimbinganKerjaPraktik'])->name('download.formulirbimbingankerjapraktik')->middleware('admin');
+Route::get('/download/laporankerjapraktik/{image}',[DownloadController::class, 'downloadLaporanKerjaPraktik'])->name('download.laporankerjapraktik')->middleware('admin');
+Route::get('/download/suratketeranganbebasakademik/{image}',[DownloadController::class, 'downloadSuratKeteranganBebasAkademik'])->name('download.suratketeranganbebasakademik')->middleware('admin');
+Route::get('/download/moa/{image}',[DownloadController::class, 'downloadMOA'])->name('download.moa')->middleware('admin');
+Route::get('/download/mou/{image}',[DownloadController::class, 'downloadMOU'])->name('download.mou')->middleware('admin');
