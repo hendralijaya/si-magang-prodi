@@ -1,6 +1,8 @@
 @extends('partials.main')
 @section('css')
+<!-- Data Tables -->
 <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.1.2/css/dataTables.dateTime.min.css">
 @endsection
 
 @section('container')
@@ -9,6 +11,19 @@
     {{ session('success') }}
   </div>
 @endif
+    <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
+        <tbody class="d-flex justify-content-center">
+            <tr>
+                <td>Minimum date:</td>
+                <td><input type="text" id="min" name="min" class="form-control"></td>
+            </tr>
+            <tr>
+                <td>Maximum date:</td>
+                <td><input type="text" id="max" name="max" class="form-control"></td>
+            </tr>
+        </tbody>
+    </table>
+
     <table id="example" class="display" style="width:100%">
         <thead>
             <th> No. </th>
@@ -36,14 +51,53 @@
             </td>
         </tr>
         @endforeach
-        </table>
-        <script>
-            $(document).ready(function() {
-            $('#example').DataTable();
-        } );
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.1.2/js/dataTables.dateTime.min.js"></script>
+
+    <script>
+        var minDate, maxDate;
+
+        // Custom filtering function which will search data in column four between two values
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = minDate.val();
+                var max = maxDate.val();
+                var date = new Date( data[4] );
+
+                if (
+                    ( min === null && max === null ) ||
+                    ( min === null && date <= max ) ||
+                    ( min <= date   && max === null ) ||
+                    ( min <= date   && date <= max )
+                ) {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        $(document).ready(function() {
+            // Create date inputs
+            minDate = new DateTime($('#min'), {
+                format: 'MMMM Do YYYY'
+            });
+            maxDate = new DateTime($('#max'), {
+                format: 'MMMM Do YYYY'
+            });
+
+            // DataTables initialisation
+            var table = $('#example').DataTable();
+
+            // Refilter the table
+            $('#min, #max').on('change', function () {
+                table.draw();
+            });
+        });
         </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
     <!-- Optional JavaScript; choose one of the two! -->
 
