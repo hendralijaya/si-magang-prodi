@@ -16,7 +16,7 @@ class MagangController extends Controller
      */
     public function index()
     {
-        $magang = DB::select("SELECT * FROM magang, mahasiswa, mentor, dosen, perusahaan WHERE magang.nim = mahasiswa.nim AND magang.id_mentor = mentor.id_mentor AND mentor.id_perusahaan = perusahaan.id_perusahaan AND magang.nik = dosen.nik ORDER BY nama_perusahaan ASC");
+        $magang = DB::select("SELECT * FROM magang, mahasiswa, mentor, perusahaan WHERE magang.nim = mahasiswa.nim AND magang.id_mentor = mentor.id_mentor AND mentor.id_perusahaan = perusahaan.id_perusahaan ORDER BY nama_perusahaan ASC");
         return view('dashboard.admin.magang', [
             'title' => 'Magang',
             'magang' => $magang

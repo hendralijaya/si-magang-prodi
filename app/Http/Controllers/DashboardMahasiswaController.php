@@ -28,7 +28,7 @@ class DashboardMahasiswaController extends Controller
     {
         $nim = auth()->user()->mahasiswa->nim;
         $mahasiswa = DB::select("SELECT * FROM mahasiswa, alamat_mahasiswa, users WHERE mahasiswa.nim = alamat_mahasiswa.nim AND mahasiswa.id_user = users.id AND mahasiswa.nim = ?", [$nim]);
-        if($mahasiswa){
+        if($mahasiswa != null){
             return view('dashboard.mahasiswa.form_profile_mahasiswa', [
                 'title' => 'Profile',
                 'mahasiswa' => $mahasiswa,
@@ -37,6 +37,7 @@ class DashboardMahasiswaController extends Controller
         }
         else{
             $mahasiswa = DB::select("SELECT * FROM mahasiswa, alamat_mahasiswa, users WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = ?", [$nim]);
+            dd($mahasiswa);
             return view('dashboard.mahasiswa.form_profile_mahasiswa', [
                 'title' => 'Profile',
                 'mahasiswa' => $mahasiswa,
@@ -51,25 +52,27 @@ class DashboardMahasiswaController extends Controller
             'kabupaten_kota' => 'required',
             'kode_pos' => 'required',
             'jalan' => 'required',
-            'khs' => 'required|mimes:pdf|max:2048',
-            'asuransi_kesehatan' => 'required|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'khs' => 'nullable|mimes:pdf|max:2048',
+            'asuransi_kesehatan' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         $alamatMahasiswa = [
-            'nim' => auth()->user()->mahasiswa->nim,
             'provinsi' => $validatedData['provinsi'],
             'kabupaten_kota' => $validatedData['kabupaten_kota'],
             'kode_pos' => $validatedData['kode_pos'],
             'jalan' => $validatedData['jalan'],
         ];
-
-        $mahasiswa = [
-            'khs' => $request->file('khs')->store('khs'),
-            'asuransi_kesehatan' => $request->file('asuransi_kesehatan')->store('asuransi_kesehatan'),
-        ];
-        $mahasiswa = auth()->user()->mahasiswa;
-        $mahasiswa->update($mahasiswa);
-        AlamatMahasiswa::where('nim', $mahasiswa->nim)->update($alamatMahasiswa);
+        if($request->file('khs')){
+            $mahasiswa['khs'] = $request->file('khs')->store('khs');
+        }
+        if($request->file('asuransi_kesehatan')){
+            $mahasiswa['asuransi_kesehatan'] = $request->file('asuransi_kesehatan')->store('asuransi_kesehatan');
+        }
+        $nim = auth()->user()->mahasiswa->nim;
+        if($request->file('khs') || $request->file('asuransi_kesehatan')){
+            Mahasiswa::where('nim', $nim)->update($mahasiswa);
+        }
+        AlamatMahasiswa::where('nim', $nim)->update($alamatMahasiswa);
         return redirect()->route('mahasiswa.dashboard')->with('success', 'Alamat mahasiswa has been updated successfully');
     }
 
@@ -86,7 +89,7 @@ class DashboardMahasiswaController extends Controller
     public function listApplyMagang()
     {
         $nim = auth()->user()->mahasiswa->nim;
-        $applymagang = DB::select("SELECT * FROM mahasiswa_apply_magang_perusahaan, mahasiswa, perusahaan WHERE mahasiswa_apply_magang_perusahaan.id_perusahaan = perusahaan.id_perusahaan AND mahasiswa_apply_magang_perusahaan.nim = mahasiswa.nim AND mahasiswa.nim = ? ORDER BY nama_perusahaan ASC", [$nim]);
+        $applymagang = DB::select("SELECT * FROM apply_magang, mahasiswa, perusahaan WHERE apply_magang.id_perusahaan = perusahaan.id_perusahaan AND apply_magang.nim = mahasiswa.nim AND mahasiswa.nim = ? ORDER BY nama_perusahaan ASC", [$nim]);
         return view('dashboard.mahasiswa.applymagang', [
             'title' => 'List Apply Magang',
             'applymagang' => $applymagang,
@@ -182,52 +185,87 @@ class DashboardMahasiswaController extends Controller
 
     public function storeMagang(Request $request)
     {
-        $validatedData = $request->validate([
-            'nama_mentor' => 'required',
-            'no_hp' => 'required',
-            'email_mentor' => 'required',
-            'id_perusahaan' => 'required',
-            'tanggal_pengambilan' => 'required',
-            'tahun_ajaran' => 'required',
-            'semester' => 'required',
-            'laporan_kerja_praktik' => 'required',
-            'formulir_bimbingan_kerja_praktik' => 'required',
-            'buku_aktivitas_harian_kerja_praktik' => 'required',
-            'surat_keterangan_bebas_akademik' => 'required',
-            'id_perusahaan' => 'required',
-            'nik' => 'required'
-        ]);
-        $validatedDataMentor = $request->validate([
-            'nama_mentor' => $validatedData['nama_mentor'],
-            'no_hp' => $validatedData['no_hp'],
-            'email_mentor' => $validatedData['email_mentor'],
-            'id_perusahaan' => $validatedData['id_perusahaan'],
-        ]);
-        $validatedDataMagang = $request->validate([
-            'tanggal_pengambilan' => $validatedData['tanggal_pengambilan'],
-            'tahun_ajaran' => $validatedData['tahun_ajaran'],
-            'semester' => $validatedData['semester'],
-            'id_perusahaan' => $validatedData['id_perusahaan'],
-            'nik' => $validatedData['nik']
-        ]);
-        $validatedDataMagang['laporan_kerja_praktik'] = $request->file('laporan_kerja_praktik')->store('dokumen_magang/laporan_kerja_praktik');
-        $validatedDataMagang['formulir_bimbingan_kerja_praktik'] = $request->file('formulir_bimbingan_kerja_praktik')->store('dokumen_magang/formulir_bimbingan_kerja_praktik');
-        $validatedDataMagang['buku_aktivitas_harian_kerja_praktik'] = $request->file('buku_aktivitas_harian_kerja_praktik')->store('dokumen_magang/buku_aktivitas_harian_kerja_praktik');
-        $validatedDataMagang['surat_keterangan_bebas_akademik'] = $request->file('surat_keterangan_bebas_akademik')->store('dokumen_magang/surat_keterangan_bebas_akademik');
-        $idMentor = Mentor::create($validatedDataMentor)->id;
-        $validatedDataMagang['id_mentor'] = $idMentor;
-        $validatedDataMagang['nim'] = auth()->user()->mahasiswa->nim;
-        $now = Carbon::now();
-        $validatedDataMagang['id_magang'] = 'A';
-        if($now->month > 8){
-            $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '01' . $now->year;
-        } else if($now->month > 1 && $now->month < 5){
-            $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '02' . $now->year;
-        } else {
-            $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '03' . $now->year;
+        if($request->id_mentor != null){
+
+            $validatedData = $request->validate([
+                'id_mentor' => 'required',
+                'tanggal_pengambilan' => 'required',
+                'tahun_ajaran' => 'required',
+                'semester' => 'required',
+                'laporan_kerja_praktik' => 'required|mimes:pdf,doc,docx|max:2048',
+                'formulir_bimbingan_kerja_praktik' => 'required|mimes:pdf,doc,docx|max:2048',
+                'buku_aktivitas_harian_kerja_praktik' => 'required|mimes:pdf,doc,docx|max:2048',
+                'surat_keterangan_bebas_akademik' => 'required|mimes:pdf,doc,docx|max:2048',
+            ]);
+            $validatedDataMagang = [
+                'id_mentor' => $validatedData['id_mentor'],
+                'tanggal_pengambilan' => $validatedData['tanggal_pengambilan'],
+                'tahun_ajaran' => $validatedData['tahun_ajaran'],
+                'semester' => $validatedData['semester']
+            ];
+
+            $validatedDataMagang['laporan_kerja_praktik'] = $request->file('laporan_kerja_praktik')->store('dokumen_magang/laporan_kerja_praktik');
+            $validatedDataMagang['formulir_bimbingan_kerja_praktik'] = $request->file('formulir_bimbingan_kerja_praktik')->store('dokumen_magang/formulir_bimbingan_kerja_praktik');
+            $validatedDataMagang['buku_aktivitas_harian_kerja_praktik'] = $request->file('buku_aktivitas_harian_kerja_praktik')->store('dokumen_magang/buku_aktivitas_harian_kerja_praktik');
+            $validatedDataMagang['surat_keterangan_bebas_akademik'] = $request->file('surat_keterangan_bebas_akademik')->store('dokumen_magang/surat_keterangan_bebas_akademik');
+            $validatedDataMagang['nim'] = auth()->user()->mahasiswa->nim;
+            $now = Carbon::now();
+            $validatedDataMagang['id_magang'] = 'A';
+            if($now->month > 8){
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '01' . $now->year;
+            } else if($now->month > 1 && $now->month < 5){
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '02' . $now->year;
+            } else {
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '03' . $now->year;
+            }
+            Magang::create($validatedDataMagang);
+            return redirect()->intended(route('mahasiswa.dashboard'))->with('success','Magang has been successfully applied');
+        }else{
+            $validatedData = $request->validate([
+                'nama_mentor' => 'required',
+                'no_hp' => 'required',
+                'email_mentor' => 'required',
+                'id_perusahaan' => 'required',
+                'tanggal_pengambilan' => 'required',
+                'tahun_ajaran' => 'required',
+                'semester' => 'required',
+                'laporan_kerja_praktik' => 'required',
+                'formulir_bimbingan_kerja_praktik' => 'required',
+                'buku_aktivitas_harian_kerja_praktik' => 'required',
+                'surat_keterangan_bebas_akademik' => 'required',
+                'id_perusahaan' => 'required',
+            ]);
+            $validatedDataMentor = [
+                'nama_mentor' => $validatedData['nama_mentor'],
+                'no_hp' => $validatedData['no_hp'],
+                'email_mentor' => $validatedData['email_mentor'],
+                'id_perusahaan' => $validatedData['id_perusahaan'],
+            ];
+            $validatedDataMagang = [
+                'tanggal_pengambilan' => $validatedData['tanggal_pengambilan'],
+                'tahun_ajaran' => $validatedData['tahun_ajaran'],
+                'semester' => $validatedData['semester'],
+                'id_perusahaan' => $validatedData['id_perusahaan'],
+            ];
+            $validatedDataMagang['laporan_kerja_praktik'] = $request->file('laporan_kerja_praktik')->store('dokumen_magang/laporan_kerja_praktik');
+            $validatedDataMagang['formulir_bimbingan_kerja_praktik'] = $request->file('formulir_bimbingan_kerja_praktik')->store('dokumen_magang/formulir_bimbingan_kerja_praktik');
+            $validatedDataMagang['buku_aktivitas_harian_kerja_praktik'] = $request->file('buku_aktivitas_harian_kerja_praktik')->store('dokumen_magang/buku_aktivitas_harian_kerja_praktik');
+            $validatedDataMagang['surat_keterangan_bebas_akademik'] = $request->file('surat_keterangan_bebas_akademik')->store('dokumen_magang/surat_keterangan_bebas_akademik');
+            $idMentor = Mentor::create($validatedDataMentor)->id;
+            $validatedDataMagang['id_mentor'] = $idMentor;
+            $validatedDataMagang['nim'] = auth()->user()->mahasiswa->nim;
+            $now = Carbon::now();
+            $validatedDataMagang['id_magang'] = 'A';
+            if($now->month > 8){
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '01' . $now->year;
+            } else if($now->month > 1 && $now->month < 5){
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '02' . $now->year;
+            } else {
+                $validatedDataMagang['id_magang'] = $validatedDataMagang['id_magang'] . '03' . $now->year;
+            }
+            Magang::create($validatedDataMagang);
+            return redirect()->intended(route('mahasiswa.dashboard'))->with('success','Magang has been successfully applied');
         }
-        Magang::create($validatedDataMagang);
-        return redirect()->intended(route('mahasiswa.dashboard'))->with('success','Magang has been successfully applied');
     }
 
 

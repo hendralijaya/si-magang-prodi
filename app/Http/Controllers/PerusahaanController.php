@@ -137,6 +137,7 @@ class PerusahaanController extends Controller
     public function update(Request $request, $id)
     {
         $validatedDataPerusahaan = $request->validate([
+            'status_kerja_sama' => 'required',
             'nomor_telepon' => 'required',
             'email_perusahaan' => 'required',
             'moa' => 'nullable|mimes:pdf|max:2048',
@@ -144,17 +145,17 @@ class PerusahaanController extends Controller
         ]);
 
         if($request->file('moa')){
-            if($request->file('oldmoa')){
-                Storage::delete($request->file('oldmoa'));
+            if($request->oldmoa){
+                Storage::delete($request->oldmoa);
             }
-            $validatedDataPerusahaan['moa'] = $request->file('moa')->store('moa');
+            $validatedDataPerusahaan['moa'] = $request->file('moa')->store('dokumen_perusahaan/moa');
         }
 
         if($request->file('mou')){
-            if($request->file('oldmou')){
-                Storage::delete($request->file('oldmou'));
+            if($request->oldmou){
+                Storage::delete($request->oldmou);
             }
-            $validatedDataPerusahaan['moa'] = $request->file('mou')->store('mou');
+            $validatedDataPerusahaan['moa'] = $request->file('mou')->store('dokumen_perusahaan/mou');
         }
         Perusahaan::where('id_perusahaan', $id)->update($validatedDataPerusahaan);
         return redirect()->intended(route('perusahaan.index'))->with('success', 'Perusahaan has been successfully updated');
