@@ -29,7 +29,6 @@
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Jurusan </th>
-            <th>Nama Dosen </th>
             <th> Nama Perusahaan </th>
             <th> Nama Mentor </th>
             <th> Tanggal Pengambilan </th>
@@ -42,7 +41,6 @@
             <td>{{ $loop->iteration }}</td>
             <td>{{ $m->nama_mahasiswa }}</td>
             <td>{{ $m->jurusan }}</td>
-            <td>{{ $m->nama_dosen }}</td>
             <td>{{ $m->nama_perusahaan }}</td>
             <td>{{ $m->nama_mentor }}</td>
             <td>{{ $m->tanggal_pengambilan }}</td>

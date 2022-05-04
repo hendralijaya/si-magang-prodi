@@ -9,7 +9,7 @@ class ApplyMagang extends Model
 {
     use HasFactory;
     public $timestamps = false;
-    protected $table = 'mahasiswa_apply_magang_perusahaan';
+    protected $table = 'apply_magang';
     protected $fillable = [
         'nim',
         'id_perusahaan',

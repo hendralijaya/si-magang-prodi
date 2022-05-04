@@ -62,17 +62,19 @@ class MahasiswaController extends Controller
             'jurusan' => $validatedData['jurusan'],
             'peminatan' => $validatedData['peminatan'],
             'tahun_angkatan' => $validatedData['tahun_angkatan'],
-            'asuransi_kesehatan' => $request->file('asuransi_kesehatan')->store('asuransi_kesehatan'),
         ];
         $validatedDataUser = [
             'email' => $validatedData['email'],
             'password' => bcrypt($validatedData['password']),
             'id_role' => 2
         ];
+        $alamatMahasiswa = [
+            'nim' => $validatedData['nim'],
+        ];
         $idUser = User::create($validatedDataUser)->id;
         $validatedDataMahasiswa['id_user'] = $idUser;
         Mahasiswa::create($validatedDataMahasiswa);
-        
+        AlamatMahasiswa::create($alamatMahasiswa);
         return redirect()->intended(route('mahasiswa.index'))->with('success','Data mahasiswa has been successfully added');
     }
 
@@ -139,7 +141,7 @@ class MahasiswaController extends Controller
         if($mahasiswa->asuransi_kesehatan){
             Storage::delete($mahasiswa->asuransi_kesehatan);
         }
-        $mahasiswa->delete();
+        Mahasiswa::where('nim',$id)->delete();
         return redirect()->intended(route('mahasiswa.index'))->with('success','Data mahasiswa has been successfully deleted');
     }
 }

@@ -26,10 +26,6 @@ use App\Http\Controllers\DownloadController;
 |
 */
 
-Route::get('/test', function () {
-    return response()->file(Storage::path('public/test.pdf'));
-});
-
 //Login routes
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login.authenticate')->middleware('guest');

@@ -1,7 +1,7 @@
 @extends('partials.main')
 @section('container')
     <h3>Form Perusahaan</h3>
-    <form action="{{ route('perusahaan.update', $perusahaan->id_perusahaan) }}" method="post">
+    <form action="{{ route('perusahaan.update', $perusahaan->id_perusahaan) }}" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
     <div class="mb-3 row">

@@ -102,22 +102,6 @@
         </div>
 
         <div class="mb-3 row">
-            <label for="" class="col-sm-2 col-form-label">Nama Perusahaan : </label>
-            <div class= "col-sm-10">
-            @error('id_perusahaan')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
-            </div>
-            @enderror
-            <select name="id_perusahaan" id="" class="col-sm-10">
-            @foreach ($perusahaan as $p)
-              <option value="{{ $p->id_perusahaan }}">{{ $p->nama_perusahaan }}</option>
-            @endforeach
-            </select>
-        </div>
-        </div>
-
-        <div class="mb-3 row">
             <label for="" class="col-sm-2 col-form-label">Nama Mentor : </label>
             <div class= "col-sm-10">
             @error('id_mentor')
@@ -126,6 +110,7 @@
             </div>
             @enderror
             <select name="id_mentor" id="" class="col-sm-10">
+                <option value=""></option>
             @foreach ($mentor as $m)
               <option value="{{ $m->id_mentor }}">{{ $m->nama_mentor }}</option>
             @endforeach
@@ -137,6 +122,23 @@
             Jika mentor tidak ada di dropdown maka isi dibawah ini dan kosongkan
             dropdown
         </h6>
+
+        <div class="mb-3 row">
+            <label for="" class="col-sm-2 col-form-label">Nama Perusahaan : </label>
+            <div class= "col-sm-10">
+            @error('id_perusahaan')
+            <div class="alert alert-danger col-sm-10">
+                <small>{{ $message }}</small>
+            </div>
+            @enderror
+            <select name="id_perusahaan" id="" class="col-sm-10">
+                <option value=""></option>
+            @foreach ($perusahaan as $p)
+              <option value="{{ $p->id_perusahaan }}">{{ $p->nama_perusahaan }}</option>
+            @endforeach
+            </select>
+        </div>
+        </div>
 
         <div class="mb-3 row">
             <label for="" class="col-sm-2 col-form-label">

@@ -21,15 +21,19 @@
             <th> Status Kerja Sama </th>
             <th> Nomor Telepon </th>
             <th> Email Perusahaan </th>
+            <th> Jumlah Mahasiswa Apply Magang </th>
+            <th> Jumlah Mahasiswa Magang </th>
             <th> Action </th>
         </thead>
         @forelse ($perusahaan as $company)
         <tr>
-            <td style="text-align: center">{{ $loop->iteration }}</td>
-            <td>{{ $company->nama_perusahaan }}</td>
-            <td>{{ $company->status_kerja_sama == '' ? '-' : $company->status_kerja_sama}}</td>
-            <td>{{ $company->nomor_telepon }}</td>
-            <td>{{ $company->email_perusahaan }}</td>
+            <td class="text-center">{{ $loop->iteration }}</td>
+            <td class="text-center">{{ $company->nama_perusahaan }}</td>
+            <td class="text-center">{{ $company->status_kerja_sama == '' ? '-' : $company->status_kerja_sama}}</td>
+            <td class="text-center">{{ $company->nomor_telepon }}</td>
+            <td class="text-center">{{ $company->email_perusahaan }}</td>
+            <td class="text-center">{{ $company->jumlah_mahasiswa_apply_magang }}</td>
+            <td class="text-center">{{ $company->jumlah_mahasiswa_magang }}</td>
             <td>
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
