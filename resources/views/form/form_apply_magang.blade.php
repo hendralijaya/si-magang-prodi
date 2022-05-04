@@ -1,5 +1,6 @@
-@extends('partials.main') 
+@extends('partials.main')
 @section('container')
+<div class="container">
 <h3>Form Apply Magang</h3>
 <form action="{{ route('mahasiswa.storeApplyMagang') }}" method="POST" enctype="multipart/form-data">
     @csrf
@@ -27,7 +28,7 @@
                 <small>{{ $message }}</small>
             </div>
         @enderror
-        </div>  
+        </div>
       </div>
 
     <div class="mb-3 row">
@@ -53,7 +54,7 @@
                 <small>{{ $message }}</small>
             </div>
         @enderror
-        </div>   
+        </div>
       </div>
 
     <div class="mb-3 row">
@@ -79,7 +80,7 @@
         @enderror
         </div>
       </div>
-      
+
       <div class="mb-3 row">
         <label for="cars" class="col-sm-2 col-form-label">Status Apply</label>
         @error('status_apply')
@@ -395,4 +396,5 @@
     </div>
     <button type="submit" value="Submit">Submit</button>
 </form>
+</div>
 @endsection

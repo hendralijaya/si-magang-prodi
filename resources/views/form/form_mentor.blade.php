@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Mentor</h3>
     <form action="{{ route('mentor.store') }}" method="POST">
       @csrf
@@ -46,7 +47,7 @@
     </div>
   <div class= "mb-3 row">
     <label for="" class="col-sm-2 col-form-label">
-      Asal Perusahaan 
+      Asal Perusahaan
     </label>
     <div class="col-sm-10">
     @error('id_perusahaan')
@@ -63,5 +64,6 @@
 </div>
 <button type="submit" value="Submit">Submit</button>
 </form>
-    
+</div>
+
 @endsection

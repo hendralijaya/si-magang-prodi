@@ -4,16 +4,17 @@
 @endsection
 
 @section('container')
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('dosen.create') }}"> Add New Dosen </a>
-</div>
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+<div class="container">
+    <div class="col-md-3 d-md-inline">
+        <a class="btn btn-primary w-100" style="margin-top: 20px; margin-bottom: 20px;" href="{{ route('dosen.create') }}"> Add New Dosen </a>
+    </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Dosen </th>
             <th> Program Studi </ht>
@@ -21,8 +22,8 @@
             <th> Action </th>
         </thead>
         @foreach ($dosen as $d)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
+        <tr style="text-align: center">
+            <td >{{ $loop->iteration }}</td>
             <td>{{ $d->nama_dosen }}</td>
             <td>{{ $d->prodi }}</td>
             <td>{{ $d->no_hp }}</td>
@@ -37,14 +38,16 @@
             </td>
         </tr>
         @endforeach
-        </table>
-        <script>
-            $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-        </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    </table>
+</div>
+
+    <script>
+        $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

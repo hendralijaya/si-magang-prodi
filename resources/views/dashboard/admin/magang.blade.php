@@ -6,11 +6,12 @@
 @endsection
 
 @section('container')
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+<div class="container" style="margin-top: 20px">
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
         <tbody class="d-flex justify-content-center">
             <tr>
@@ -24,7 +25,7 @@
         </tbody>
     </table>
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Jurusan </th>
@@ -36,7 +37,7 @@
             <th> Action </th>
         </thead>
         @foreach ($magang as $m)
-        <tr>
+        <tr style="text-align: center">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $m->nama_mahasiswa }}</td>
             <td>{{ $m->jurusan }}</td>
@@ -45,17 +46,18 @@
             <td>{{ $m->tanggal_pengambilan }}</td>
             <td>{{ $m->nilai_magang_angka != NULL ? $m->nilai_magang_angka : '-' }}</td>
             <td>{{ $m->nilai_magang_huruf != NULL ? $m->nilai_magang_huruf : '-' }}</td>
-            <td>
+            <td class="d-flex">
                 <a href="/admin/magang/{{ $m->id_magang }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-            <form action="/admin/magang/{{ $m->id_magang }}" method="post" class="btn3 btn-md d-md-inline">
-                @method('delete')
-                @csrf
-                <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
-            </form>
+                <form action="/admin/magang/{{ $m->id_magang }}" method="post" class="btn3 btn-md d-md-inline">
+                    @method('delete')
+                    @csrf
+                    <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
+                </form>
             </td>
         </tr>
         @endforeach
-        </table>
+    </table>
+</div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -5,18 +5,18 @@
 @endsection
 
 @section('container')
-
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
-</div>
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
-    <table id="example" class="display" style="width:100%">
-        <thead>
-            <th>No. </th>
+<div class="container">
+    <div class="col-md-3 d-md-inline" >
+        <a class="btn btn-primary w-100" style="margin-top: 20px; margin-bottom: 20px;" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
+    </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    <table id="example" class="display" style="width:100%;">
+        <thead style="text-align: center">
+            <th> No. </th>
             <th> Nama Perusahaan </th>
             <th> Status Kerja Sama </th>
             <th> Nomor Telepon </th>
@@ -34,7 +34,7 @@
             <td class="text-center">{{ $company->email_perusahaan }}</td>
             <td class="text-center">{{ $company->jumlah_mahasiswa_apply_magang }}</td>
             <td class="text-center">{{ $company->jumlah_mahasiswa_magang }}</td>
-            <td>
+            <td class="d-flex">
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
             <form action="/admin/perusahaan/{{ $company->id_perusahaan }}" method="post" class="btn3 btn-md d-md-inline">
@@ -45,16 +45,19 @@
             </td>
         </tr>
         @empty
-            <h3>Prrusahaan is null</h3>
+            <h3>Perusahaan is null</h3>
         @endforelse
-        </table>
-        <script>
-            $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-        </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    </table>
+</div>
+
+
+    <script>
+        $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

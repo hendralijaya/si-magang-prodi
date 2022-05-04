@@ -4,14 +4,15 @@
 @endsection
 
 @section('container')
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('mentor.create') }}"> Add New Mentor </a>
-</div>
+<div class="container">
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    <div class="col-md-3 d-md-inline">
+        <a class="btn btn-primary w-100" style="margin-top: 20px; margin-bottom: 20px;" href="{{ route('mentor.create') }}"> Add New Mentor </a>
+    </div>
     <table id="example" class="display" style="width:100%">
         <thead>
             <th>No. </th>
@@ -40,14 +41,16 @@
         @empty
             <h3>Mentor is null</h3>
         @endforelse
-        </table>
-        <script>
-            $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-        </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    </table>
+</div>
+
+    <script>
+        $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

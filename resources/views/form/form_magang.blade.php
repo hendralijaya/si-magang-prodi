@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Magang</h3>
     <form action="{{ route('mahasiswa.storeMagang') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -184,4 +185,5 @@
 
         <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
     </form>
-@endsection 
+</div>
+@endsection

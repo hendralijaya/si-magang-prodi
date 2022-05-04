@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Perusahaan</h3>
     <form action="{{ route('perusahaan.update', $perusahaan->id_perusahaan) }}" method="post" enctype="multipart/form-data">
         @method('put')
@@ -63,7 +64,7 @@
         @enderror
         </div>
     </div>
-    
+
 
     <div class= "mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
@@ -88,7 +89,7 @@
 {{-- DROPDOWN MULTISELECT --}}
 {{-- <div class= "mb-3 row">
 
-    
+
 
     <label for="" class="col-sm-2 col-form-label">
         Bidang Perusahaan
@@ -98,6 +99,7 @@
 </div> --}}
 <button type="submit" value="Submit">Submit</button>
 </form>
+</div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Mentor</h3>
     <form action="{{ route('mentor.update',$mentor->id_mentor) }}" method="POST">
         @method('PUT')
@@ -17,7 +18,7 @@
         @enderror
         </div>
     </div>
-    </div>
+
     <div class= "mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
             Email Mentor
@@ -47,4 +48,5 @@
     </div>
     <button type="submit" value="Submit">Submit</button>
 </form>
+</div>
 @endsection

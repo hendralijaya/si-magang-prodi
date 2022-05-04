@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Mahasiswa</h3>
 <form action="{{ route('mahasiswa.update',$mahasiswa[0]->nim) }}" method="POST" enctype="multipart/form-data">
     @method('PUT')
@@ -62,4 +63,5 @@
 
     <button type="submit" value="Submit">Submit</button>
 </form>
+</div>
 @endsection
