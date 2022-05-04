@@ -34,7 +34,7 @@
             <td class="text-center">{{ $company->email_perusahaan }}</td>
             <td class="text-center">{{ $company->jumlah_mahasiswa_apply_magang }}</td>
             <td class="text-center">{{ $company->jumlah_mahasiswa_magang }}</td>
-            <td>
+            <td class="d-flex">
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
             <a href="/admin/perusahaan/{{ $company->id_perusahaan }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
             <form action="/admin/perusahaan/{{ $company->id_perusahaan }}" method="post" class="btn3 btn-md d-md-inline">
