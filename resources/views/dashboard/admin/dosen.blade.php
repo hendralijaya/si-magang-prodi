@@ -14,7 +14,7 @@
     </div>
     @endif
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Dosen </th>
             <th> Program Studi </ht>
@@ -22,8 +22,8 @@
             <th> Action </th>
         </thead>
         @foreach ($dosen as $d)
-        <tr>
-            <td>{{ $loop->iteration }}</td>
+        <tr style="text-align: center">
+            <td >{{ $loop->iteration }}</td>
             <td>{{ $d->nama_dosen }}</td>
             <td>{{ $d->prodi }}</td>
             <td>{{ $d->no_hp }}</td>

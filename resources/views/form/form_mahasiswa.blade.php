@@ -11,7 +11,9 @@
     <title>Data Mahasiswa</title>
   </head>
   <body>
-    <h3>Form Mahasiswa</h3>
+
+    <div class="container">
+        <h3>Form Mahasiswa</h3>
 <form action="{{ route('mahasiswa.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class = "mb-3 row">
@@ -141,6 +143,7 @@
     </div>
     <button type="submit" value="Submit">Submit</button>
 </form>
+</div>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

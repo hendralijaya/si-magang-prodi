@@ -12,7 +12,7 @@
         {{ session('success') }}
     </div>
     @endif
-    <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
+    <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px; margin-top: 20px;">
         <tbody class="d-flex justify-content-center">
             <tr>
                 <td>Minimum date:</td>
@@ -26,7 +26,7 @@
     </table>
 
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Nama Perusahaan </ht>
@@ -36,7 +36,7 @@
             <th> Action </th>
         </thead>
         @foreach ($applymagang as $am)
-        <tr>
+        <tr style="text-align: center">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $am->nama_mahasiswa }}</td>
             <td>{{ $am->nama_perusahaan }}</td>

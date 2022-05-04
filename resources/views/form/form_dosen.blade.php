@@ -1,5 +1,6 @@
 @extends('partials.main')
 @section('container')
+<div class="container">
     <h3>Form Dosen Pembimbing</h3>
     <form action="{{ route('dosen.store') }}" method="POST">
         @csrf
@@ -86,7 +87,8 @@
             @enderror
             </div>
         </div>
-        
+
         <button class="btn btn-primary" type="submit" value="Submit">Submit</button>
     </form>
+</div>
 @endsection

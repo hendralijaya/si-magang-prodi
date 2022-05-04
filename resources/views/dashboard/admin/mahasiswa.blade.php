@@ -15,7 +15,7 @@
     @endif
 
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Nomor HP </th>
@@ -25,7 +25,7 @@
             <th> Action </th>
         </thead>
         @forelse ($mahasiswa as $m)
-        <tr>
+        <tr style="text-align: center">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $m->nama_mahasiswa }}</td>
             <td>{{ $m->no_hp }}</td>
@@ -35,11 +35,11 @@
             <td>
                 <a href="/admin/mahasiswa/{{ $m->nim }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
                 <a href="/admin/mahasiswa/{{ $m->nim }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>
-            <form action="/admin/mahasiswa/{{ $m->nim }}" method="post" class="btn3 btn-md d-md-inline">
-                @method('delete')
-                @csrf
-                <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
-            </form>
+                <form action="/admin/mahasiswa/{{ $m->nim }}" method="post" class="btn3 btn-md d-md-inline">
+                    @method('delete')
+                    @csrf
+                    <button class='btn btn-danger' onclick="return confirm('Are you sure?')" type="submit">delete</button>
+                </form>
             </td>
         </tr>
         @empty

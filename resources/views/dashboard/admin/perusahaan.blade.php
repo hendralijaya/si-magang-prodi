@@ -15,7 +15,7 @@
     </div>
     @endif
     <table id="example" class="display" style="width:100%;">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Perusahaan </th>
             <th> Status Kerja Sama </th>

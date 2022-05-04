@@ -25,7 +25,7 @@
         </tbody>
     </table>
     <table id="example" class="display" style="width:100%">
-        <thead>
+        <thead style="text-align: center">
             <th> No. </th>
             <th> Nama Mahasiswa </th>
             <th> Jurusan </th>
@@ -37,7 +37,7 @@
             <th> Action </th>
         </thead>
         @foreach ($magang as $m)
-        <tr>
+        <tr style="text-align: center">
             <td>{{ $loop->iteration }}</td>
             <td>{{ $m->nama_mahasiswa }}</td>
             <td>{{ $m->jurusan }}</td>
