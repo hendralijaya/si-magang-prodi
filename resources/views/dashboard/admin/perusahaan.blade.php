@@ -5,18 +5,18 @@
 @endsection
 
 @section('container')
-
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
-</div>
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
-    <table id="example" class="display" style="width:100%">
+<div class="container">
+    <div class="col-md-3 d-md-inline" >
+        <a class="btn btn-primary w-100" style="margin-top: 20px; margin-bottom: 20px;" href="{{ route('perusahaan.create') }}"> Add New Perusahaan </a>
+    </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
+    <table id="example" class="display" style="width:100%;">
         <thead>
-            <th>No. </th>
+            <th> No. </th>
             <th> Nama Perusahaan </th>
             <th> Status Kerja Sama </th>
             <th> Nomor Telepon </th>
@@ -25,7 +25,7 @@
         </thead>
         @forelse ($perusahaan as $company)
         <tr>
-            <td>{{ $loop->iteration }}</td>
+            <td style="text-align: center">{{ $loop->iteration }}</td>
             <td>{{ $company->nama_perusahaan }}</td>
             <td>{{ $company->status_kerja_sama == '' ? '-' : $company->status_kerja_sama}}</td>
             <td>{{ $company->nomor_telepon }}</td>
@@ -41,16 +41,19 @@
             </td>
         </tr>
         @empty
-            <h3>Prrusahaan is null</h3>
+            <h3>Perusahaan is null</h3>
         @endforelse
-        </table>
-        <script>
-            $(document).ready(function() {
-            $('#example').DataTable();
-        } );
-        </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-        <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    </table>
+</div>
+
+
+    <script>
+        $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
     <!-- Optional JavaScript; choose one of the two! -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->

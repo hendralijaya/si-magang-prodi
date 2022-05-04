@@ -6,11 +6,12 @@
 @endsection
 
 @section('container')
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+<div class="container">
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
     <table border="0" cellspacing="5" cellpadding="5" style="margin-bottom: 20px;">
         <tbody class="d-flex justify-content-center">
             <tr>
@@ -52,6 +53,7 @@
         </tr>
         @endforeach
     </table>
+</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>

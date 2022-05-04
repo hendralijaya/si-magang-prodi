@@ -14,7 +14,7 @@ class ApplyMagangController extends Controller
      */
     public function index()
     {
-        $applymagang = DB::select("SELECT * FROM mahasiswa_apply_magang_perusahaan, mahasiswa, perusahaan WHERE mahasiswa_apply_magang_perusahaan.id_perusahaan = perusahaan.id_perusahaan AND mahasiswa_apply_magang_perusahaan.nim = mahasiswa.nim ORDER BY nama_perusahaan ASC");
+        $applymagang = DB::select("SELECT * FROM apply_magang, mahasiswa, perusahaan WHERE apply_magang.id_perusahaan = perusahaan.id_perusahaan AND apply_magang.nim = mahasiswa.nim ORDER BY nama_perusahaan ASC");
         return view('dashboard.admin.applymagang', [
             'title' => 'Apply Magang',
             'applymagang' => $applymagang

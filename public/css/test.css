@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(to bottom, #ff9900 0%, #ffffff 100%);
+    background: linear-gradient(to bottom, #eaeaea 0%, #ffffff 100%);
 }
 
 .b-example-divider {
@@ -15,6 +15,7 @@ body {
     color: rgb(255, 0, 0);
     background-color: var(--bs-dark);
     border-color: var(--bs-gray);
+
 }
 
 .form-control-dark:focus {
@@ -45,6 +46,7 @@ img {
     height: 100%;
 }
 
+
 .container {
     background: no-repeat;
     background-position: center;
@@ -73,7 +75,7 @@ img {
 
 .kelompok {
     position: absolute;
-    top: 35%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: large;

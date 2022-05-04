@@ -4,14 +4,15 @@
 @endsection
 
 @section('container')
-<div class="col-md-3 d-md-inline">
-    <a class="btn btn-primary" href="{{ route('mahasiswa.create') }}"> Add New Mahasiswa </a>
-</div>
-@if (session()->has('success'))
-  <div class="alert alert-success col-lg-8" role="alert">
-    {{ session('success') }}
-  </div>
-@endif
+<div class="container">
+    <div class="col-md-3 d-md-inline">
+        <a class="btn btn-primary w-100" style="margin-top: 20px; margin-bottom: 20px;" href="{{ route('mahasiswa.create') }}"> Add New Mahasiswa </a>
+    </div>
+    @if (session()->has('success'))
+    <div class="alert alert-success col-lg-8" role="alert">
+        {{ session('success') }}
+    </div>
+    @endif
 
     <table id="example" class="display" style="width:100%">
         <thead>
@@ -44,7 +45,8 @@
         @empty
             <h3>Mahasiswa is null</h3>
         @endforelse
-        </table>
+    </table>
+</div>
         <script>
             $(document).ready(function() {
             $('#example').DataTable();
