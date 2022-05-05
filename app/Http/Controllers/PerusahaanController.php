@@ -19,7 +19,7 @@ class PerusahaanController extends Controller
      */
     public function index(Request $request)
     {
-        $perusahaan = DB::select('SELECT *, COUNT(DISTINCT apply_magang.nim) AS jumlah_mahasiswa_apply_magang, COUNT(DISTINCT magang.nim) AS jumlah_mahasiswa_magang FROM perusahaan,mentor,apply_magang, magang WHERE perusahaan.id_perusahaan = mentor.id_perusahaan AND perusahaan.id_perusahaan = apply_magang.id_perusahaan AND mentor.id_mentor = magang.id_mentor GROUP BY perusahaan.id_perusahaan');
+        $perusahaan = DB::select('SELECT * FROM perusahaan NATURAL LEFT JOIN (SELECT *, COUNT(DISTINCT apply_magang.nim) AS jumlah_mahasiswa_apply_magang, COUNT(DISTINCT magang.nim) AS jumlah_mahasiswa_magang FROM mahasiswa NATURAL LEFT JOIN apply_magang NATURAL LEFT JOIN magang GROUP BY mahasiswa.nim) AS sq');
         return view('dashboard.admin.perusahaan', [
             'title' => 'Perusahaan',
             'perusahaan' => $perusahaan,
