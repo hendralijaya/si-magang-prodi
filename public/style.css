@@ -4,17 +4,17 @@
     box-sizing: border-box;
   }
   body{
-    background: rgb(219, 226, 226);
+    background: rgb(225, 227, 227);
   }
   .row{
     background: white;
     border-radius: 0px;
     box-shadow: 12px 12px 22px grey;
   }
-  img{
+  /* img{
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
-  }
+  } */
   .btn1{
     border: none;
     outline: none;

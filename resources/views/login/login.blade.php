@@ -12,36 +12,37 @@
     <title>Login Akun</title>
   </head>
   <body>
-    
+
     <section class="Form my-4 mx-5">
         <div class="container">
-            <div class="row no-gutters">
-                <div class="col-lg-5">
-                    <img src="./78532865_p0_master1200.jpg" class="img-fluid" alt="">
+            <div class="row no-gutters d-flex align-items-center justify-content-center">
+                <div class="col-lg-6 d-flex align-items-center justify-content-center" style="margin-top: 10px">
+                    <img src="./logo-pradita-minimized.png" class="img-fluid" alt="" style="width:60%;">
                 </div>
-                <div class="col-lg-7 px-5 pt-5">
+
+                <div class="col-lg-6 text-center"  style="background-color: rgb(236, 236, 236); padding-top: 100px; padding-bottom: 100px;border-radius : 20px 0 0 20px">
                   <h1 class="font-weight-bold py-3">Login</h1>
                   <h4>Login into your account</h4>
                   <form action="{{ route('login.authenticate') }}" method='POST'>
                     @csrf
-                    <div class="form-row">
-                        <div class="col-lg-7">
+                    <div class="form-row d-flex justify-content-center">
+                        <div class="col-lg-8 col-8">
                           <input type="email" placeholder="Email Address" class="form-control my-3 p-2" name="email">
                           @error("email")
                           <div class="alert alert-danger">{{ $message }}</div>
                           @enderror
                         </div>
                       </div>
-                    <div class="form-row">
-                        <div class="col-lg-7">
+                    <div class="form-row d-flex justify-content-center" >
+                        <div class="col-lg-8 col-8">
                           <input type="password" placeholder="Password" class="form-control my-3 p-2" name="password">
                           @error("password")
                           <div class="alert alert-danger">{{ $message }}</div>
                           @enderror
                         </div>
                       </div>
-                    <div class="form-row">
-                      <div class="col-lg-7">
+                      <div class="form-row d-flex justify-content-center" >
+                      <div class="col-lg-8 col-8">
                         <button type="submit" class="btn1 mt-3 mb-4">Login</button>
                   </form>
                 </div>

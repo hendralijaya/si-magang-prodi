@@ -1,7 +1,7 @@
 @extends('partials.main')
 @section('container')
-<div class="container">
-    <h3>Form Mentor</h3>
+<div class="container" style="margin-top: 20px; margin-bottom: 20px">
+    <h3 style="margin-top: 20px; margin-bottom: 20px">Form Mentor</h3>
     <form action="{{ route('mentor.update',$mentor->id_mentor) }}" method="POST">
         @method('PUT')
       @csrf
@@ -10,7 +10,7 @@
             Nama Mentor
         </label>
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="nama_mentor" value="{{ $mentor->nama_mentor }}">
+        <input type="text" class="form-control" name="nama_mentor" value="{{ $mentor->nama_mentor }}">
         @error('nama_mentor')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -24,12 +24,12 @@
             Email Mentor
         </label>
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="email_mentor" value="{{ $mentor->email_mentor }}">
-        @error('email_mentor')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
-            </div>
-        @enderror
+            <input type="text" class="form-control" name="email_mentor" value="{{ $mentor->email_mentor }}">
+            @error('email_mentor')
+                <div class="alert alert-danger col-sm-10">
+                    <small>{{ $message }}</small>
+                </div>
+            @enderror
         </div>
     </div>
 
@@ -38,15 +38,18 @@
             Nomor Handphone
         </label>
         <div class="col-sm-10">
-        <input type="number" class="col-sm-10" name="no_hp" value="{{ $mentor->no_hp }}">
-        @error('nomor_telepon')
-            <div class="alert alert-danger col-sm-10">
-                <small>{{ $message }}</small>
-            </div>
-        @enderror
+            <input type="number" class="form-control" name="no_hp" value="{{ $mentor->no_hp }}">
+            @error('nomor_telepon')
+                <div class="alert alert-danger col-sm-10">
+                    <small>{{ $message }}</small>
+                </div>
+            @enderror
         </div>
     </div>
-    <button type="submit" value="Submit">Submit</button>
+
+    <div class="submit-button  d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </div>
 </form>
 </div>
 @endsection
