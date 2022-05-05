@@ -6,9 +6,9 @@
 
 @section('container')
 <div id="overlay" style="background-image:url(../pradita.png); background-size:cover; height: 100vh; width: 100vw">
-    <div class="group-introduction" style="display: flex; justify-content: center; align-items:center; color:white; height: 100%; padding: 0; margin: 0;">
-        <div class="detail-intro" style="font-weight: bold; border-radius: 10px; background-color:rgba(251, 251, 251, 0.127) ; box-shadow: 0px 8px 8px rgba(0, 0, 0, 1); " >
-            <h5 style="text-align: center;">Kelompok 1</h5>
+    <div class="group-introduction" style="display: flex; justify-content: center; align-items:center; color:white; height: 100%; ">
+        <div class="detail-intro" style="font-weight: bold; border-radius: 10px; background-color:rgba(251, 251, 251, 0.127) ; box-shadow: 0px 8px 8px rgba(0, 0, 0, 1); min-width: 300px; min-height: 200px " >
+            <h5 style="text-align: center; margin-top: 10px">Kelompok 1</h5>
             <ol style="line-height: 40px; text-align: center;">
                 <li>Bryan Elmer Purnomo - NIM</li>
                 <li>David Eri Nugroho  - NIM</li>

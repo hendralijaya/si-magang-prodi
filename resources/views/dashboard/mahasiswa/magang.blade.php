@@ -4,12 +4,13 @@
 @endsection
 
 @section('container')
+<div class="container" style="margin-top: 20px; margin-bottom: 20px">
 @if (session()->has('success'))
   <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}
   </div>
 @endif
-    <table id="example" class="display" style="width:100%">
+    <table id="example" class="display" style="width:100%;" >
         <thead>
             <th> No. </th>
             <th> Nama Mahasiswa </th>
@@ -35,6 +36,7 @@
         </tr>
         @endforeach
         </table>
+</div>
         <script>
             $(document).ready(function() {
             $('#example').DataTable();
