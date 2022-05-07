@@ -1,7 +1,7 @@
 @extends('partials.main')
 @section('container')
-<div class="container">
-    <h3>Form Perusahaan</h3>
+<div class="container"  style="margin-top: 20px; margin-bottom: 20px">
+    <h3  style="margin-top: 20px; margin-bottom: 20px">Form Perusahaan</h3>
     <form action="{{ route('perusahaan.update', $perusahaan->id_perusahaan) }}" method="post" enctype="multipart/form-data">
         @method('put')
         @csrf
@@ -10,7 +10,7 @@
             Nama Perusahaan
         </label>
         <div class="col-sm-10">
-        <input type="text" class="col-sm-10" name="nama_perusahaan" disabled value="{{ $perusahaan->nama_perusahaan }}">
+        <input type="text" class="form-control" name="nama_perusahaan" disabled value="{{ $perusahaan->nama_perusahaan }}">
         @error('nama_perusahaan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -24,7 +24,7 @@
           Status Kerja Sama
         </label>
         <div class="col-sm-10">
-        <select name="status_kerja_sama" id="" class="col-sm-10">
+        <select name="status_kerja_sama" id="" class="form-select">
             <option value="" {{ $perusahaan->status_kerja_sama == '' ? 'selected' : ''}}>Belum Ada</option>
             <option value="MOA" {{ $perusahaan->status_kerja_sama == 'MOA' ? 'selected' : ''}}>MOA</option>
             <option value="MOU" {{ $perusahaan->status_kerja_sama == 'MOU' ? 'selected' : ''}}>MOU</option>
@@ -42,7 +42,7 @@
             Nomor Telepon
         </label>
         <div class="col-sm-10">
-        <input type="number" class="col-sm-10" name="nomor_telepon" value="{{ $perusahaan->nomor_telepon }}">
+        <input type="number" class="form-control" name="nomor_telepon" value="{{ $perusahaan->nomor_telepon }}">
         @error('nomor_telepon')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -56,7 +56,7 @@
             Email Perusahaan
         </label>
         <div class="col-sm-10">
-        <input type="email" class="col-sm-10" name="email_perusahaan" value="{{ $perusahaan->email_perusahaan  }}">
+        <input type="email" class="form-control" name="email_perusahaan" value="{{ $perusahaan->email_perusahaan  }}">
         @error('email_perusahaan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -72,7 +72,7 @@
         </label>
         <div class="col-sm-10">
         <input type="hidden" name='oldmoa' value='{{ $perusahaan->moa }}'>
-        <input type="file" class="col-sm-10" name="moa">
+        <input type="file" class="form-control" name="moa">
         </div>
     </div>
 
@@ -82,7 +82,7 @@
       </label>
         <div class="col-sm-10">
             <input type="hidden" name='oldmou' value='{{ $perusahaan->mou }}'>
-            <input type="file" class="col-sm-10" name="mou">
+            <input type="file" class="form-control" name="mou">
         </div>
   </div>
 
@@ -97,7 +97,10 @@
     <div class="col-sm-10">
     <input type="text" class="col-sm-10" name="bidang_perusahaan[]">
 </div> --}}
-<button type="submit" value="Submit">Submit</button>
+
+<div class="submit-button  d-flex justify-content-end">
+    <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+</div>
 </form>
 </div>
     <!-- Optional JavaScript; choose one of the two! -->

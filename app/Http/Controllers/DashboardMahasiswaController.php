@@ -38,7 +38,7 @@ class DashboardMahasiswaController extends Controller
         }
         else{
             $mahasiswa = DB::select("SELECT * FROM mahasiswa, alamat_mahasiswa, users WHERE mahasiswa.id_user = users.id AND mahasiswa.nim = ?", [$nim]);
-            dd($mahasiswa);
+            // dd($mahasiswa);
             return view('dashboard.mahasiswa.form_profile_mahasiswa', [
                 'title' => 'Profile',
                 'mahasiswa' => $mahasiswa,

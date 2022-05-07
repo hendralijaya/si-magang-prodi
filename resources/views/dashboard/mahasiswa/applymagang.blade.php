@@ -4,6 +4,7 @@
 @endsection
 
 @section('container')
+<div class="container" style="margin-top: 20px; margin-bottom: 20px">
 @if (session()->has('success'))
   <div class="alert alert-success col-lg-8" role="alert">
     {{ session('success') }}
@@ -29,6 +30,7 @@
         </tr>
         @endforeach
         </table>
+    </div>
         <script>
             $(document).ready(function() {
             $('#example').DataTable();

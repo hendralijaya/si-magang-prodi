@@ -1,6 +1,8 @@
 @extends('partials.main')
 @section('container')
-    <h3>Form Mahasiswa</h3>
+<div class="container" style="margin-top:30px; margin-bottom:30px; background-color: rgb(250, 250, 250); border-radius: 30px; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);">
+    <div class="container">
+    <h3 style="margin-bottom: 20px;">Form Mahasiswa</h3>
 <form action="{{ route('mahasiswa.editprofile') }}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
@@ -9,7 +11,7 @@
             Nama Mahasiswa
         </label>
         <div class="col-sm-10">
-            <input type="text" class="col-sm-10" name="nama_mahasiswa" value="{{ $mahasiswa[0]->nama_mahasiswa }}" disabled>
+            <input type="text" class="form-control" name="nama_mahasiswa" value="{{ $mahasiswa[0]->nama_mahasiswa }}" disabled>
             @error('nama_mahasiswa')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -23,7 +25,7 @@
             No HP
         </label>
         <div class= "col-sm-10">
-            <input type="number" class="col-sm-10" name="no_hp" value="{{ $mahasiswa[0]->no_hp }}" disabled>
+            <input type="number" class="form-control" name="no_hp" value="{{ $mahasiswa[0]->no_hp }}" disabled>
             @error('no_hp')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -37,7 +39,7 @@
             Jurusan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="jurusan" value="{{ $mahasiswa[0]->jurusan }}" disabled>
+            <input type="text" class="form-control" name="jurusan" value="{{ $mahasiswa[0]->jurusan }}" disabled>
             @error('jurusan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -51,7 +53,7 @@
             Peminatan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="peminatan" value="{{ $mahasiswa[0]->peminatan }}" disabled>
+            <input type="text" class="form-control" name="peminatan" value="{{ $mahasiswa[0]->peminatan }}" disabled>
             @error('peminatan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -66,7 +68,7 @@
             Provinsi
         </label>
         <div class="col-sm-10">
-            <select name="provinsi" id="" class="col-sm-10">
+            <select name="provinsi" id="" class="form-control">
               @foreach ($provinsi as $p)
                 <option value="{{ $p->nama_provinsi }}" {{ $p->nama_provinsi == $mahasiswa[0]->provinsi ? 'selected' : '' }}>{{ $p->nama_provinsi }}</option>
               @endforeach
@@ -83,7 +85,7 @@
             Kabupaten/Kota
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="kabupaten_kota" value="{{ $mahasiswa[0]->kabupaten_kota }}">
+            <input type="text" class="form-control" name="kabupaten_kota" value="{{ $mahasiswa[0]->kabupaten_kota }}">
             @error('kabupaten_kota')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -96,7 +98,7 @@
             Kode Pos
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="kode_pos" value="{{ $mahasiswa[0]->kode_pos }}">
+            <input type="text" class="form-control" name="kode_pos" value="{{ $mahasiswa[0]->kode_pos }}">
             @error('kode_pos')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -109,7 +111,7 @@
             Jalan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="jalan" value="{{ $mahasiswa[0]->jalan }}">
+            <input type="text" class="form-control" name="jalan" value="{{ $mahasiswa[0]->jalan }}">
             @error('jalan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -123,7 +125,7 @@
             Provinsi
         </label>
         <div class="col-sm-10">
-            <select name="provinsi" id="" class="col-sm-10">
+            <select name="provinsi" id="" class="form-select">
               @foreach ($provinsi as $p)
                 <option value="{{ $p->nama_provinsi }}">{{ $p->nama_provinsi }}</option>
               @endforeach
@@ -140,7 +142,7 @@
             Kabupaten/Kota
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="kabupaten_kota">
+            <input type="text" class="form-control" name="kabupaten_kota">
             @error('kabupaten_kota')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -153,7 +155,7 @@
             Kode Pos
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="kode_pos">
+            <input type="text" class="form-control" name="kode_pos">
             @error('kode_pos')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -166,7 +168,7 @@
             Jalan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="jalan">
+            <input type="text" class="form-control" name="jalan">
             @error('jalan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -182,8 +184,8 @@
             Asuransi Kesehatan
         </label>
         <div class= "col-sm-10">
-            <input type="file" class="col-sm-10" name="asuransi_kesehatan">
-            <input type="hidden" class="col-sm-10" name="oldasuransi_kesehatan" value='{{$mahasiswa[0]->asuransi_kesehatan }}'>
+            <input type="file" class="form-control" name="asuransi_kesehatan">
+            <input type="hidden" class="form-control" name="oldasuransi_kesehatan" value='{{$mahasiswa[0]->asuransi_kesehatan }}'>
             <p>{{"Ini adalah file asuransi kesehatan anda " . $mahasiswa[0]->asuransi_kesehatan }}</p>
             @error('asuransi_kesehatan')
             <div class="alert alert-danger col-sm-10">
@@ -192,14 +194,14 @@
         @enderror
         </div>
     </div>
-    
+
     <div class="mb-3 row">
         <label for=""  class="col-sm-2 col-form-label">
             KHS
         </label>
         <div class= "col-sm-10">
-            <input type="file" class="col-sm-10" name="khs">
-            <input type="hidden" class="col-sm-10" name="oldkhs" value='{{$mahasiswa[0]->khs }}'>
+            <input type="file" class="form-control" name="khs">
+            <input type="hidden" class="form-control" name="oldkhs" value='{{$mahasiswa[0]->khs }}'>
             <p>{{"Ini adalah file khs anda " . $mahasiswa[0]->khs }}</p>
             @error('khs')
             <div class="alert alert-danger col-sm-10">
@@ -209,6 +211,10 @@
         </div>
     </div>
 
-    <button type="submit" value="Submit">Submit</button>
+    <div class="submit-button  d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" style="margin-bottom: 20px" value="Submit">Submit</button>
+    </div>
 </form>
+    </div>
+    </div>
 @endsection

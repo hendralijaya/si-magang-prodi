@@ -1,7 +1,7 @@
 @extends('partials.main')
 @section('container')
-<div class="container">
-    <h3>Form Mahasiswa</h3>
+<div class="container" style="margin-top: 20px; margin-bottom: 20px">
+    <h3 style="margin-top: 20px; margin-bottom: 20px">Form Mahasiswa</h3>
 <form action="{{ route('mahasiswa.update',$mahasiswa[0]->nim) }}" method="POST" enctype="multipart/form-data">
     @method('PUT')
     @csrf
@@ -10,7 +10,7 @@
             Nama Mahasiswa
         </label>
         <div class="col-sm-10">
-            <input type="text" class="col-sm-10" name="nama_mahasiswa" value="{{ $mahasiswa[0]->nama_mahasiswa }}" disabled>
+            <input type="text" class="form-control" name="nama_mahasiswa" value="{{ $mahasiswa[0]->nama_mahasiswa }}" disabled>
             @error('nama_mahasiswa')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -24,7 +24,7 @@
             No HP
         </label>
         <div class= "col-sm-10">
-            <input type="number" class="col-sm-10" name="no_hp" value="{{ $mahasiswa[0]->no_hp }}">
+            <input type="number" class="form-control" name="no_hp" value="{{ $mahasiswa[0]->no_hp }}">
             @error('no_hp')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -38,7 +38,7 @@
             Jurusan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="jurusan" value="{{ $mahasiswa[0]->jurusan }}">
+            <input type="text" class="form-control" name="jurusan" value="{{ $mahasiswa[0]->jurusan }}">
             @error('jurusan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -52,7 +52,7 @@
             Peminatan
         </label>
         <div class= "col-sm-10">
-            <input type="text" class="col-sm-10" name="peminatan" value="{{ $mahasiswa[0]->peminatan }}">
+            <input type="text" class="form-control" name="peminatan" value="{{ $mahasiswa[0]->peminatan }}">
             @error('peminatan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -61,7 +61,9 @@
         </div>
     </div>
 
-    <button type="submit" value="Submit">Submit</button>
+    <div class="submit-button  d-flex justify-content-end">
+        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </div>
 </form>
 </div>
 @endsection

@@ -6,9 +6,9 @@
 
 @section('container')
 <div id="overlay" style="background-image:url(../pradita.png); background-size:cover; height: 100vh; width: 100vw">
-    <div class="group-introduction" style="display: flex; justify-content: center; align-items:center; color:white; height: 100%; padding: 0; margin: 0;">
-        <div class="detail-intro" style="font-weight: bold; border-radius: 10px; background-color:rgba(251, 251, 251, 0.127) ; box-shadow: 0px 8px 8px rgba(0, 0, 0, 1); " >
-            <h5 style="text-align: center;">Kelompok 1</h5>
+    <div class="group-introduction" style="display: flex; justify-content: center; align-items:center; color:white; height: 100%; ">
+        <div class="detail-intro" style="font-weight: bold; border-radius: 10px; background-color:rgba(45, 45, 45, 0.593) ; box-shadow: 0px 8px 8px rgba(0, 0, 0, 1); min-width: 300px; min-height: 200px " >
+            <h5 style="text-align: center; margin-top: 10px">Kelompok 1</h5>
             <ol style="line-height: 40px; text-align: center;">
                 <li>Bryan Elmer Purnomo - 2110101004</li>
                 <li>David Eri Nugroho  - 2110101010</li>
@@ -22,6 +22,62 @@
 </div>
 
 <div class="container">
+    <div class="row">
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Mahasiswa</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Dosen</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Perusahaan</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Mentor</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Apply Magang</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Magang</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="Mangang" style="margin-top: 20px">
 
         <h2> Tentang SI Magang Prodi </h2>
