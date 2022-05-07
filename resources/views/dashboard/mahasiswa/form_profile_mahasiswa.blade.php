@@ -171,8 +171,9 @@
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
             </div>
-        @enderror
+            @enderror
         </div>
+            
     </div>
     @endif
 
@@ -182,6 +183,8 @@
         </label>
         <div class= "col-sm-10">
             <input type="file" class="col-sm-10" name="asuransi_kesehatan">
+            <input type="hidden" class="col-sm-10" name="oldasuransi_kesehatan" value='{{$mahasiswa[0]->asuransi_kesehatan }}'>
+            <p>{{"Ini adalah file asuransi kesehatan anda " . $mahasiswa[0]->asuransi_kesehatan }}</p>
             @error('asuransi_kesehatan')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>
@@ -196,6 +199,8 @@
         </label>
         <div class= "col-sm-10">
             <input type="file" class="col-sm-10" name="khs">
+            <input type="hidden" class="col-sm-10" name="oldkhs" value='{{$mahasiswa[0]->khs }}'>
+            <p>{{"Ini adalah file khs anda " . $mahasiswa[0]->khs }}</p>
             @error('khs')
             <div class="alert alert-danger col-sm-10">
                 <small>{{ $message }}</small>

@@ -10,11 +10,11 @@
         <div class="detail-intro" style="font-weight: bold; border-radius: 10px; background-color:rgba(251, 251, 251, 0.127) ; box-shadow: 0px 8px 8px rgba(0, 0, 0, 1); " >
             <h5 style="text-align: center;">Kelompok 1</h5>
             <ol style="line-height: 40px; text-align: center;">
-                <li>Bryan Elmer Purnomo - NIM</li>
-                <li>David Eri Nugroho  - NIM</li>
-                <li>Hendra Lijaya - NIM</li>
-                <li>Yogi Valentino Nadeak - NIM</li>
-                <li>Yohannes Linandy - NIM</li>
+                <li>Bryan Elmer Purnomo - 2110101004</li>
+                <li>David Eri Nugroho  - 2110101010</li>
+                <li>Hendra Lijaya - 2110101023</li>
+                <li>Yogi Valentino Nadeak - 2110101033</li>
+                <li>Yohannes Linandy - 2110101034</li>
             </ol>
         </div>
 

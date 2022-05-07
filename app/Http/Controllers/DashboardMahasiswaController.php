@@ -13,6 +13,7 @@ use App\Models\ApplyMagang;
 use Illuminate\Http\Request;
 use App\Models\AlamatMahasiswa;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardMahasiswaController extends Controller
 {
@@ -54,6 +55,8 @@ class DashboardMahasiswaController extends Controller
             'jalan' => 'required',
             'khs' => 'nullable|mimes:pdf|max:2048',
             'asuransi_kesehatan' => 'nullable|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'oldkhs' => 'nullable',
+            'oldasuransi_kesehatan' => 'nullable',
         ]);
 
         $alamatMahasiswa = [
@@ -64,9 +67,15 @@ class DashboardMahasiswaController extends Controller
         ];
         if($request->file('khs')){
             $mahasiswa['khs'] = $request->file('khs')->store('khs');
+            if($request->oldkhs){
+                Storage::delete($request->oldkhs);
+            }
         }
         if($request->file('asuransi_kesehatan')){
             $mahasiswa['asuransi_kesehatan'] = $request->file('asuransi_kesehatan')->store('asuransi_kesehatan');
+            if($request->oldasuransi_kesehatan){
+                Storage::delete($request->oldasuransi_kesehatan);
+            }
         }
         $nim = auth()->user()->mahasiswa->nim;
         if($request->file('khs') || $request->file('asuransi_kesehatan')){
