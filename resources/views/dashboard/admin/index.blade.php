@@ -22,6 +22,62 @@
 </div>
 
 <div class="container">
+    <div class="row">
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Mahasiswa</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Dosen</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Perusahaan</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Mentor</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Apply Magang</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-2 col-md-4 col-sm-6 col-12" style="margin-top: 20px; margin-bottom: 20px;">
+            <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
+                <div>
+                    <p class="mb-2"><b>Magang</b></p>
+                    <h6 class="mb-0">43</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="Mangang" style="margin-top: 20px">
 
         <h2> Tentang SI Magang Prodi </h2>
