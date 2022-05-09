@@ -27,7 +27,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Mahasiswa</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $mahasiswa[0]->jumlah_mahasiswa }}</h6>
                 </div>
             </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Dosen</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $dosen[0]->jumlah_dosen }}</h6>
                 </div>
             </div>
         </div>
@@ -45,7 +45,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Perusahaan</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $perusahaan[0]->jumlah_perusahaan }}</h6>
                 </div>
             </div>
         </div>
@@ -54,7 +54,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Mentor</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $mentor[0]->jumlah_mentor }}</h6>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Apply Magang</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $apply_magang[0]->jumlah_apply_magang }}</h6>
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
             <div class="bg-light rounded d-flex align-items-center justify-content-center p-4" style="box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.5);">
                 <div>
                     <p class="mb-2"><b>Magang</b></p>
-                    <h6 class="mb-0">43</h6>
+                    <h6 class="mb-0">{{ $magang[0]->jumlah_magang }}</h6>
                 </div>
             </div>
         </div>
