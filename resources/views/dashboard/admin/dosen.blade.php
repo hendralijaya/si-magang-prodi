@@ -19,6 +19,7 @@
             <th> Nama Dosen </th>
             <th> Program Studi </ht>
             <th> Nomor HP </th>
+            <th> Jumlah Mahasiswa yang Dibimbing Tahun Ini </th>
             <th> Action </th>
         </thead>
         @foreach ($dosen as $d)
@@ -27,6 +28,7 @@
             <td>{{ $d->nama_dosen }}</td>
             <td>{{ $d->prodi }}</td>
             <td>{{ $d->no_hp }}</td>
+            <td>{{ $d->jumlah_mahasiswa_dibimbing_tahun_ini }}</td>
             <td>
                 <a href="/admin/dosen/{{ $d->nik }}" class="btn1 btn btn-success btn-md d-md-inline">show</a>
                 <a href="/admin/dosen/{{ $d->nik }}/edit" class="btn2 btn btn-warning btn-md d-md-inline">edit</a>

@@ -16,7 +16,7 @@ class DosenController extends Controller
      */
     public function index()
     {
-        $dosen = DB::select("SELECT * FROM dosen");
+        $dosen = DB::select("SELECT dosen.*, (SELECT COUNT(DISTINCT magang.nim) FROM magang WHERE dosen.nik = magang.nik AND tahun_ajaran = '2022') AS jumlah_mahasiswa_dibimbing_tahun_ini FROM `dosen` GROUP BY dosen.nik");
         return view('dashboard.admin.dosen', [
             'dosen' => $dosen,
             'title' => 'Dosen'
